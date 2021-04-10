@@ -8,6 +8,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var dataService = DataService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +18,27 @@ class LoginViewController: UIViewController {
     }
 
 
+    @IBOutlet weak var emailField: UITextField!
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
+    
     @IBAction func loginAction(_ sender: Any) {
-        print("les go")
+        
+        
+        let email = emailField.text ?? ""
+        let password = passwordField.text ?? ""
+        let response = dataService.login(email: email, password: password)
+        switch response {
+        case .success:
+            print("Sucessful login")
+        default:
+            print("Error while login")
+
+        }
+        
+        
+        
     }
     /*
     // MARK: - Navigation
