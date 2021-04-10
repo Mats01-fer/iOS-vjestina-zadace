@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F66000CC262204E900F99995 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66000CA262204E900F99995 /* LoginViewController.swift */; };
+		F66000CD262204E900F99995 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66000CB262204E900F99995 /* LoginViewController.xib */; };
 		F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9352621BCBA00644B53 /* AppDelegate.swift */; };
 		F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */; };
 		F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9392621BCBA00644B53 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F66000CA262204E900F99995 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F66000CB262204E900F99995 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F6FDC9322621BCBA00644B53 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FDC9352621BCBA00644B53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F66000CF262204F800F99995 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F66000CA262204E900F99995 /* LoginViewController.swift */,
+				F66000CB262204E900F99995 /* LoginViewController.xib */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		F6FDC9292621BCBA00644B53 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +72,7 @@
 				F6FDC9352621BCBA00644B53 /* AppDelegate.swift */,
 				F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */,
 				F6FDC9392621BCBA00644B53 /* ViewController.swift */,
+				F66000CF262204F800F99995 /* LoginView */,
 				F6FDC93B2621BCBA00644B53 /* Main.storyboard */,
 				F6FDC93E2621BCBD00644B53 /* Assets.xcassets */,
 				F6FDC9402621BCBD00644B53 /* LaunchScreen.storyboard */,
@@ -124,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66000CD262204E900F99995 /* LoginViewController.xib in Resources */,
 				F6FDC9422621BCBD00644B53 /* LaunchScreen.storyboard in Resources */,
 				F6FDC93F2621BCBD00644B53 /* Assets.xcassets in Resources */,
 				F6FDC93D2621BCBA00644B53 /* Main.storyboard in Resources */,
@@ -137,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66000CC262204E900F99995 /* LoginViewController.swift in Sources */,
 				F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */,
 				F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */,
 				F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */,
