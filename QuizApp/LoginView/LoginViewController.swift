@@ -6,20 +6,28 @@
 //
 
 import UIKit
+import PureLayout
+import SnapKit
+
 
 class LoginViewController: UIViewController {
     
     var dataService = DataService()
 
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
     
     @IBOutlet weak var errorLable: UILabel!
     
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addConstraints()
         errorLable.isHidden = true
         emailField.attributedPlaceholder = NSAttributedString(string:"Email",
                                                               attributes:
@@ -28,7 +36,6 @@ class LoginViewController: UIViewController {
                                                               attributes:
                                                                 [NSAttributedString.Key.foregroundColor: UIColor.white])
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func loginAction(_ sender: Any) {
@@ -47,6 +54,45 @@ class LoginViewController: UIViewController {
 
         }
         
+        
+        
+    }
+    
+    private func addConstraints() {
+        
+        let elements = [titleLabel, emailField, passwordField, errorLable, loginButton]
+        
+        let height = view.bounds.height
+        
+        for element in elements{
+            element!.snp.makeConstraints { make in
+              make.width.equalToSuperview().multipliedBy(0.8)
+              make.height.equalTo(45)
+              make.centerX.equalToSuperview()
+            }
+        }
+        titleLabel.snp.makeConstraints { make in
+          make.top.equalTo(view).offset(height * 0.1)
+        }
+        
+        emailField.snp.makeConstraints { make in
+          make.top.equalTo(view).offset(height * 0.2)
+        }
+        
+        passwordField.snp.makeConstraints { make in
+          make.top.equalTo(emailField).offset(45 + 18)
+        }
+
+        
+        errorLable.snp.makeConstraints { make in
+          make.top.equalTo(passwordField).offset(38)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+          make.top.equalTo(errorLable).offset(38)
+        }
+        loginButton.layer.cornerRadius = 20
+
         
         
     }
