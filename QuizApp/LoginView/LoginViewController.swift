@@ -11,17 +11,25 @@ class LoginViewController: UIViewController {
     
     var dataService = DataService()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
 
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var errorLable: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        errorLable.isHidden = true
+        emailField.attributedPlaceholder = NSAttributedString(string:"Email",
+                                                              attributes:
+                                                                [NSAttributedString.Key.foregroundColor: UIColor.white])
+        passwordField.attributedPlaceholder = NSAttributedString(string:"password",
+                                                              attributes:
+                                                                [NSAttributedString.Key.foregroundColor: UIColor.white])
+
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func loginAction(_ sender: Any) {
         
@@ -32,8 +40,10 @@ class LoginViewController: UIViewController {
         switch response {
         case .success:
             print("Sucessful login")
+            errorLable.isHidden = true
         default:
             print("Error while login")
+            errorLable.isHidden = false
 
         }
         
