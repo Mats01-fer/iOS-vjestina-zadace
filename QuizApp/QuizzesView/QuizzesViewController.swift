@@ -56,6 +56,13 @@ class QuizzesViewController: UIViewController {
                 print(quizz)
         }
         
+        var nrOFNBAQuestions = 0
+        for q in allQuizzes{
+            nrOFNBAQuestions += q.questions.filter({$0.question.contains("NBA")}).count
+        }
+        
+        funFactLable.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
+        
         quizesTable.reloadData()
         
     }
@@ -71,7 +78,7 @@ class QuizzesViewController: UIViewController {
 //                width: view.bounds.width,
 //                height: view.bounds.height - 100))
         quizesTable = UITableView()
-        view.addSubview(quizesTable)
+        
         
         
         getQuizzesButton = UIButton()
@@ -84,8 +91,14 @@ class QuizzesViewController: UIViewController {
         
         getQuizzesButton.addTarget(self, action:#selector(self.fetchQuizzes), for: .touchUpInside)
         
+        funFactLable = UILabel()
+        funFactLable.textColor = .white
+        funFactLable.contentMode = .scaleToFill
+        funFactLable.numberOfLines = 2
         
         view.addSubview(getQuizzesButton)
+        view.addSubview(quizesTable)
+        view.addSubview(funFactLable)
         
         
 //        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
@@ -109,6 +122,13 @@ class QuizzesViewController: UIViewController {
             make.top.equalTo(view).offset(height * 0.1)
         }
         getQuizzesButton.layer.cornerRadius = 20
+        
+        funFactLable.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view).offset(height * 0.2)
+        }
         
         quizesTable.snp.makeConstraints { make in
             make.width.equalToSuperview()
