@@ -18,7 +18,8 @@ class QuizzesViewController: UIViewController {
     
     private var quizzesTable: UITableView!
     
-    private var funFactLable: UILabel!
+    private var funFactTitleLabel: UILabel!
+    private var funFactLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -63,7 +64,9 @@ class QuizzesViewController: UIViewController {
             nrOFNBAQuestions += q.questions.filter({$0.question.contains("NBA")}).count
         }
         
-        funFactLable.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
+        funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
+        funFactLabel.isHidden = false
+        funFactTitleLabel.isHidden = false
         
         quizzesTable.reloadData()
         quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
@@ -100,22 +103,27 @@ class QuizzesViewController: UIViewController {
         
         getQuizzesButton.addTarget(self, action:#selector(self.fetchQuizzes), for: .touchUpInside)
         
-        funFactLable = UILabel()
-        funFactLable.textColor = .white
-        funFactLable.contentMode = .scaleToFill
-        funFactLable.numberOfLines = 2
+        funFactLabel = UILabel()
+        funFactLabel.textColor = .white
+        funFactLabel.contentMode = .scaleToFill
+        funFactLabel.numberOfLines = 2
+        funFactLabel.isHidden = true
+        
+        funFactTitleLabel = UILabel()
+        funFactTitleLabel.text = "💡 Fun Fact"
+        funFactTitleLabel.textColor = .white
+        funFactTitleLabel.contentMode = .scaleToFill
+        funFactTitleLabel.font = UIFont.systemFont(ofSize: 18)
+        funFactTitleLabel.numberOfLines = 1
+        funFactTitleLabel.isHidden = true
         
         view.addSubview(getQuizzesButton)
         view.addSubview(quizzesTable)
-        view.addSubview(funFactLable)
-        
-        
-//        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
-        
-        
+        view.addSubview(funFactLabel)
+        view.addSubview(funFactTitleLabel)
 
         
-        
+//        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
         
         
         
@@ -133,11 +141,18 @@ class QuizzesViewController: UIViewController {
         }
         getQuizzesButton.layer.cornerRadius = 20
         
-        funFactLable.snp.makeConstraints { make in
+        
+        funFactTitleLabel.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.88)
+            make.height.equalTo(30)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view).offset(height * 0.2)
+        }
+        funFactLabel.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(45)
             make.centerX.equalToSuperview()
-            make.top.equalTo(view).offset(height * 0.2)
+            make.top.equalTo(view).offset(height * 0.2 + 30.0)
         }
         
         quizzesTable.snp.makeConstraints { make in
@@ -202,7 +217,7 @@ extension QuizzesViewController: UITableViewDataSource {
 extension QuizzesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        return 170.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
