@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class QuizzTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -14,6 +15,9 @@ class QuizzTableViewCell: UITableViewCell {
     
     @IBOutlet weak var quizzImage: UIImageView!
     
+    @IBOutlet weak var difficultyLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +25,12 @@ class QuizzTableViewCell: UITableViewCell {
         contentView.layer.cornerRadius = 10
         contentView.backgroundColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         quizzImage.layer.cornerRadius = 10
+        difficultyLabel.snp.makeConstraints { make in
+            
+            make.top.equalTo(contentView).offset(20)
+            make.right.equalTo(contentView).offset(-20)
+        }
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,10 +41,11 @@ class QuizzTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(withQuiz quiz: Quiz) {
+    func setup(withQuiz quizz: Quiz) {
         
-        titleLabel.text = quiz.title
-        descriptionLabel.text = quiz.description
+        titleLabel.text = quizz.title
+        descriptionLabel.text = quizz.description
+        difficultyLabel.text = String(quizz.level)
         
     }
     

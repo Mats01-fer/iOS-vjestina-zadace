@@ -32,6 +32,8 @@ class QuizzesViewController: UIViewController {
        
        
         quizzesTable.register(UINib(nibName: "QuizzTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        quizzesTable.register(QuizzesTableSectionHeaderView.self,
+              forHeaderFooterViewReuseIdentifier: "sectionHeader")
         quizzesTable.dataSource = self
         quizzesTable.delegate = self
         
@@ -208,6 +210,7 @@ extension QuizzesViewController: UITableViewDataSource {
     }
     
     
+    
 
     
     
@@ -221,6 +224,27 @@ extension QuizzesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        50.0
+        100.0
     }
+    
+    func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                   "sectionHeader") as! QuizzesTableSectionHeaderView
+        view.titleLabel.text = categories[section].rawValue
+        
+       return view
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+
+        if let view = view as? UITableViewHeaderFooterView {
+//            view.backgroundView?.backgroundColor = UIColor.blue
+            view.textLabel?.backgroundColor = UIColor.clear
+            view.textLabel?.textColor = UIColor.white
+            
+        }
+    }
+    
+    
 }
