@@ -14,6 +14,8 @@ class QuizzesViewController: UIViewController {
     let dataService = DataService()
     let cellIdentifier = "cellId"
     
+    private var titleLabel: UILabel!
+    
     private var getQuizzesButton: UIButton!
     
     private var quizzesTable: UITableView!
@@ -119,10 +121,20 @@ class QuizzesViewController: UIViewController {
         funFactTitleLabel.numberOfLines = 1
         funFactTitleLabel.isHidden = true
         
+        titleLabel = UILabel()
+        titleLabel.text = "PopQuiz"
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .white
+        titleLabel.contentMode = .scaleToFill
+        titleLabel.font = UIFont.systemFont(ofSize: 22)
+        titleLabel.numberOfLines = 1
+        
         view.addSubview(getQuizzesButton)
         view.addSubview(quizzesTable)
         view.addSubview(funFactLabel)
         view.addSubview(funFactTitleLabel)
+        view.addSubview(titleLabel)
+
 
         
 //        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
@@ -134,12 +146,18 @@ class QuizzesViewController: UIViewController {
     private func addConstraints() {
         let height = view.bounds.height
         
+        titleLabel.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view).offset(height * 0.06)
+        }
         
         getQuizzesButton.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(45)
             make.centerX.equalToSuperview()
-            make.top.equalTo(view).offset(height * 0.1)
+            make.top.equalTo(view).offset(height * 0.12)
         }
         getQuizzesButton.layer.cornerRadius = 20
         
