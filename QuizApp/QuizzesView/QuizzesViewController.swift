@@ -16,7 +16,7 @@ class QuizzesViewController: UIViewController {
     
     private var getQuizzesButton: UIButton!
     
-    private var quizesTable: UITableView!
+    private var quizzesTable: UITableView!
     
     private var funFactLable: UILabel!
     
@@ -29,8 +29,10 @@ class QuizzesViewController: UIViewController {
 //        fetchQuizzes(UIButton())
         
        
-        quizesTable.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        quizesTable.dataSource = self
+       
+        quizzesTable.register(UINib(nibName: "QuizzTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        quizzesTable.dataSource = self
+        quizzesTable.delegate = self
         
 
     }
@@ -63,7 +65,10 @@ class QuizzesViewController: UIViewController {
         
         funFactLable.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
         
-        quizesTable.reloadData()
+        quizzesTable.reloadData()
+        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+ 
+
         
     }
     
@@ -77,9 +82,13 @@ class QuizzesViewController: UIViewController {
 //                y: 200,
 //                width: view.bounds.width,
 //                height: view.bounds.height - 100))
-        quizesTable = UITableView()
+        quizzesTable = UITableView()
         
         
+        quizzesTable.backgroundView?.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+        quizzesTable.separatorStyle = UITableViewCell.SeparatorStyle.none
+
         
         getQuizzesButton = UIButton()
         
@@ -97,11 +106,12 @@ class QuizzesViewController: UIViewController {
         funFactLable.numberOfLines = 2
         
         view.addSubview(getQuizzesButton)
-        view.addSubview(quizesTable)
+        view.addSubview(quizzesTable)
         view.addSubview(funFactLable)
         
         
 //        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+        
         
 
         
@@ -130,7 +140,7 @@ class QuizzesViewController: UIViewController {
             make.top.equalTo(view).offset(height * 0.2)
         }
         
-        quizesTable.snp.makeConstraints { make in
+        quizzesTable.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
             make.top.equalTo(view).offset(height * 0.3)
@@ -158,11 +168,19 @@ extension QuizzesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(
+//            withIdentifier: cellIdentifier,
+//            for: indexPath)
+//
+//        cell.textLabel?.text = "\(quizzes[indexPath.section][indexPath.row].title)"
+//
+//        return cell
         let cell = tableView.dequeueReusableCell(
             withIdentifier: cellIdentifier,
-            for: indexPath)
+            for: indexPath) as! QuizzTableViewCell
         
-        cell.textLabel?.text = "\(quizzes[indexPath.section][indexPath.row].title)"
+        
+           cell.setup(withQuiz: quizzes[indexPath.section][indexPath.row])
         
         return cell
     }
@@ -173,7 +191,21 @@ extension QuizzesViewController: UITableViewDataSource {
     ) -> String? {
         return categories[section].rawValue
     }
+    
+    
 
     
     
+}
+
+
+extension QuizzesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        50.0
+    }
 }

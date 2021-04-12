@@ -18,6 +18,9 @@
 		F66000CD262204E900F99995 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66000CB262204E900F99995 /* LoginViewController.xib */; };
 		F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4012623966000CC82BD /* QuizzesViewController.swift */; };
 		F6BEF4042623966000CC82BD /* QuizzesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF4022623966000CC82BD /* QuizzesViewController.xib */; };
+		F6BEF4132624A13600CC82BD /* aaQuizzCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4122624A13600CC82BD /* aaQuizzCellView.swift */; };
+		F6BEF4172624B39600CC82BD /* QuizzTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */; };
+		F6BEF4182624B39600CC82BD /* QuizzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */; };
 		F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9352621BCBA00644B53 /* AppDelegate.swift */; };
 		F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */; };
 		F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9392621BCBA00644B53 /* ViewController.swift */; };
@@ -40,6 +43,9 @@
 		F66000CB262204E900F99995 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F6BEF4012623966000CC82BD /* QuizzesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewController.swift; sourceTree = "<group>"; };
 		F6BEF4022623966000CC82BD /* QuizzesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizzesViewController.xib; sourceTree = "<group>"; };
+		F6BEF4122624A13600CC82BD /* aaQuizzCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aaQuizzCellView.swift; sourceTree = "<group>"; };
+		F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzTableViewCell.swift; sourceTree = "<group>"; };
+		F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizzTableViewCell.xib; sourceTree = "<group>"; };
 		F6FDC9322621BCBA00644B53 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FDC9352621BCBA00644B53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +120,9 @@
 			children = (
 				F6BEF4012623966000CC82BD /* QuizzesViewController.swift */,
 				F6BEF4022623966000CC82BD /* QuizzesViewController.xib */,
+				F6BEF4122624A13600CC82BD /* aaQuizzCellView.swift */,
+				F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */,
+				F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */,
 			);
 			path = QuizzesView;
 			sourceTree = "<group>";
@@ -215,6 +224,7 @@
 				F66000CD262204E900F99995 /* LoginViewController.xib in Resources */,
 				F6FDC9422621BCBD00644B53 /* LaunchScreen.storyboard in Resources */,
 				F6FDC93F2621BCBD00644B53 /* Assets.xcassets in Resources */,
+				F6BEF4182624B39600CC82BD /* QuizzTableViewCell.xib in Resources */,
 				F6FDC93D2621BCBA00644B53 /* Main.storyboard in Resources */,
 				F6BEF4042623966000CC82BD /* QuizzesViewController.xib in Resources */,
 			);
@@ -273,10 +283,12 @@
 				F625DD0326220C1F00E72224 /* Question.swift in Sources */,
 				F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */,
 				F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */,
+				F6BEF4172624B39600CC82BD /* QuizzTableViewCell.swift in Sources */,
 				F625DCFB26220C0500E72224 /* DataServiceProtocol.swift in Sources */,
 				F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */,
 				F625DD0426220C1F00E72224 /* QuizCategory.swift in Sources */,
 				F625DD0526220C1F00E72224 /* Quiz.swift in Sources */,
+				F6BEF4132624A13600CC82BD /* aaQuizzCellView.swift in Sources */,
 				F625DD0226220C1F00E72224 /* LoginStatus.swift in Sources */,
 				F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */,
 				F625DCF826220BFE00E72224 /* DataService.swift in Sources */,
