@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         else { return }
         window = UIWindow(windowScene: windowScene) // 2
         
-        let vc = LoginViewController() // 3
+//        let vc = LoginViewController() // 3
+    let vc = QuizzesViewController() // 3
+
         window!.rootViewController = vc // 4
         window?.makeKeyAndVisible()
     }
