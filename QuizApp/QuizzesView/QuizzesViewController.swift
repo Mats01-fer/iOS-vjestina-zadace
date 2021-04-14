@@ -71,9 +71,13 @@ class QuizzesViewController: UIViewController {
         }
         
         var nrOFNBAQuestions = 0
-        for q in allQuizzes{
-            nrOFNBAQuestions += q.questions.filter({$0.question.contains("NBA")}).count
-        }
+        
+//        for q in allQuizzes{
+//            nrOFNBAQuestions += q.questions.filter({$0.question.contains("NBA")}).count
+//        }
+        
+        nrOFNBAQuestions = allQuizzes.flatMap({ $0.questions }).filter({$0.question.contains("NBA")}).count
+        
         
         funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
         funFactLabel.isHidden = false
