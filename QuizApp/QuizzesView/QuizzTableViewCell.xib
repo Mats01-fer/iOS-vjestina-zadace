@@ -35,20 +35,30 @@
                         <rect key="frame" x="30" y="25" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3g-Z2-xWW">
-                        <rect key="frame" x="323" y="14" width="18" height="21"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rhombus.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oCm-4m-RU7">
+                        <rect key="frame" x="333" y="13.5" width="12" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="systemOrangeColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rhombus.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MZk-RV-ZMn">
+                        <rect key="frame" x="318" y="13.5" width="12" height="11"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rhombus.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dDx-SC-byV">
+                        <rect key="frame" x="302" y="13.5" width="12" height="11"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.4549019608" green="0.30980392159999998" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="d81-39-7ff" id="6Vb-lL-ViW"/>
-                <outlet property="difficultyLabel" destination="Z3g-Z2-xWW" id="v8D-jR-AGP"/>
+                <outlet property="difficultyOne" destination="dDx-SC-byV" id="Kt7-Nm-WKy"/>
+                <outlet property="difficultyThree" destination="oCm-4m-RU7" id="5Xc-eu-dK8"/>
+                <outlet property="difficultyTwo" destination="MZk-RV-ZMn" id="cOw-Em-8sI"/>
                 <outlet property="quizzImage" destination="fnY-Ch-39j" id="gUh-1h-bKf"/>
                 <outlet property="titleLabel" destination="qcQ-Ls-mGf" id="lpO-qh-HK7"/>
             </connections>
@@ -57,8 +67,9 @@
     </objects>
     <resources>
         <image name="questionmark.png" width="960" height="960"/>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="rhombus.fill" catalog="system" width="107" height="128"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

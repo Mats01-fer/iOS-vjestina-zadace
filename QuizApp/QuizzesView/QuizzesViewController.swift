@@ -23,6 +23,8 @@ class QuizzesViewController: UIViewController {
     private var funFactTitleLabel: UILabel!
     private var funFactLabel: UILabel!
     
+    private var sectionColors: [UIColor]!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,11 @@ class QuizzesViewController: UIViewController {
               forHeaderFooterViewReuseIdentifier: "sectionHeader")
         quizzesTable.dataSource = self
         quizzesTable.delegate = self
+        
+        sectionColors = [
+            UIColor(red: 0.34, green: 0.80, blue: 0.95, alpha: 1.00),
+            UIColor(red: 0.95, green: 0.79, blue: 0.30, alpha: 1.00),
+        ]
         
 
     }
@@ -194,6 +201,8 @@ extension QuizzesViewController: UITableViewDataSource {
     
     
     
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
     }
@@ -203,6 +212,7 @@ extension QuizzesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
 //        let cell = tableView.dequeueReusableCell(
 //            withIdentifier: cellIdentifier,
 //            for: indexPath)
@@ -214,8 +224,8 @@ extension QuizzesViewController: UITableViewDataSource {
             withIdentifier: cellIdentifier,
             for: indexPath) as! QuizzTableViewCell
         
-        
-           cell.setup(withQuiz: quizzes[indexPath.section][indexPath.row])
+        let colorIndex = indexPath.section % sectionColors.count
+        cell.setup(withQuiz: quizzes[indexPath.section][indexPath.row], withColor: sectionColors[colorIndex])
         
         return cell
     }
@@ -257,9 +267,11 @@ extension QuizzesViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 
         if let view = view as? UITableViewHeaderFooterView {
+            let colorIndex = section % sectionColors.count
 //            view.backgroundView?.backgroundColor = UIColor.blue
             view.textLabel?.backgroundColor = UIColor.clear
-            view.textLabel?.textColor = UIColor.white
+            view.textLabel?.textColor = sectionColors[colorIndex]
+            
             
         }
     }
