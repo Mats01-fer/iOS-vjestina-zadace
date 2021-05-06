@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
         let height = view.bounds.height
         
         for element in elements{
-            element!.snp.makeConstraints { make in
+            element!.snp.makeConstraints { make in // should gard this instead of force unwrapping
               make.width.equalToSuperview().multipliedBy(0.8)
               make.height.equalTo(45)
               make.centerX.equalToSuperview()

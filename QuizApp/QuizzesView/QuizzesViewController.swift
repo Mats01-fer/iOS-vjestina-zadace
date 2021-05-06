@@ -55,16 +55,11 @@ class QuizzesViewController: UIViewController {
     
     @objc private func fetchQuizzes(_ sender: Any) {
         let allQuizzes = dataService.fetchQuizes()
-        categories = Array(Set(allQuizzes.map({ $0.category })))
+        categories = Array(Set(allQuizzes.map({ $0.category }))) // looses ordering !!
         
         for category in categories{
             quizzes.append(allQuizzes.filter({$0.category == category}))
         }
-        
-        
-        //        let height = view.bounds.height
-        //        var initalHeight = CGFloat(0.25)
-        
         
         for quizz in categories{
                 print(quizz)
@@ -76,7 +71,9 @@ class QuizzesViewController: UIViewController {
 //            nrOFNBAQuestions += q.questions.filter({$0.question.contains("NBA")}).count
 //        }
         
-        nrOFNBAQuestions = allQuizzes.flatMap({ $0.questions }).filter({$0.question.contains("NBA")}).count
+        nrOFNBAQuestions = allQuizzes.flatMap{ $0.questions }
+                                     .filter{$0.question.contains("NBA")}
+                                     .count
         
         
         funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
@@ -85,28 +82,18 @@ class QuizzesViewController: UIViewController {
         
         quizzesTable.reloadData()
         quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
- 
-
-        
+    
     }
     
     private func buildViews() {
         
         view.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
     
-//        quizesTable = UITableView(
-//            frame: CGRect(
-//                x: 0,
-//                y: 200,
-//                width: view.bounds.width,
-//                height: view.bounds.height - 100))
         quizzesTable = UITableView()
-        
         
         quizzesTable.backgroundView?.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
         quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
         quizzesTable.separatorStyle = UITableViewCell.SeparatorStyle.none
-
         
         getQuizzesButton = UIButton()
         
@@ -145,12 +132,7 @@ class QuizzesViewController: UIViewController {
         view.addSubview(funFactLabel)
         view.addSubview(funFactTitleLabel)
         view.addSubview(titleLabel)
-
-
-        
-//        quizesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
-        
-        
+   
         
     }
     
@@ -168,7 +150,7 @@ class QuizzesViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(45)
             make.centerX.equalToSuperview()
-            make.top.equalTo(view).offset(height * 0.12)
+            make.top.equalTo(view).offset(height * 0.12)    
         }
         getQuizzesButton.layer.cornerRadius = 20
         
@@ -192,20 +174,9 @@ class QuizzesViewController: UIViewController {
             make.top.equalTo(view).offset(height * 0.3)
         }
     }
-    
-    
-    
 }
 
-
-
-
-
 extension QuizzesViewController: UITableViewDataSource {
-    
-    
-    
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
@@ -217,13 +188,6 @@ extension QuizzesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCell(
-//            withIdentifier: cellIdentifier,
-//            for: indexPath)
-//
-//        cell.textLabel?.text = "\(quizzes[indexPath.section][indexPath.row].title)"
-//
-//        return cell
         let cell = tableView.dequeueReusableCell(
             withIdentifier: cellIdentifier,
             for: indexPath) as! QuizzTableViewCell
@@ -240,12 +204,7 @@ extension QuizzesViewController: UITableViewDataSource {
     ) -> String? {
         return categories[section].rawValue
     }
-    
-    
-    
 
-    
-    
 }
 
 
@@ -272,13 +231,9 @@ extension QuizzesViewController: UITableViewDelegate {
 
         if let view = view as? UITableViewHeaderFooterView {
             let colorIndex = section % sectionColors.count
-//            view.backgroundView?.backgroundColor = UIColor.blue
             view.textLabel?.backgroundColor = UIColor.clear
             view.textLabel?.textColor = sectionColors[colorIndex]
             
-            
         }
     }
-    
-    
 }
