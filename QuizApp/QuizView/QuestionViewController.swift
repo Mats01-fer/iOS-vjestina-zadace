@@ -16,6 +16,7 @@ class QuestionViewController: UIViewController {
     private var question: Question!
     private var answerButtons: [UIButton]!
 
+    private var progressBar: QuestionTrackerView!
 
     private var router: AppRouter!
 
@@ -23,8 +24,11 @@ class QuestionViewController: UIViewController {
         router.showQuizzes()
     }
 
-    @objc private func nextQuestion(_ sender: Any) {
-        router.showQuestion(questions: questions, index: self.index + 1)
+    @objc private func nextQuestion(_ sender: UIButton) {
+        var answerIndex = answerButtons.index(of: sender) ?? 0
+
+        progressBar.updateProgress(index: self.index, correct: answerIndex == question.correctAnswer)
+        router.showNextQuestion(questions: questions, index: self.index + 1, progressBar: progressBar)
     }
 
     convenience init(router: AppRouter, _questions: [Question], _index: Int) {
@@ -33,6 +37,12 @@ class QuestionViewController: UIViewController {
         self.questions = _questions
         self.index = _index
         self.question = questions[index]
+        progressBar = QuestionTrackerView(items: questions.count)
+    }
+
+    convenience init(router: AppRouter, _questions: [Question], _index: Int, progressBar: QuestionTrackerView) {
+        self.init(router: router, _questions: _questions, _index: _index)
+        self.progressBar = progressBar
     }
 
     override func viewDidLoad() {
@@ -49,6 +59,7 @@ class QuestionViewController: UIViewController {
 
     private func buildViews() {
         view.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+
 
         questionTextLabel = UILabel()
         questionTextLabel.numberOfLines = 3
@@ -72,6 +83,7 @@ class QuestionViewController: UIViewController {
 
 
         view.addSubview(questionTextLabel)
+        view.addSubview(progressBar)
 
     }
 
@@ -92,7 +104,11 @@ class QuestionViewController: UIViewController {
 
         }
 
-
+        progressBar.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(100)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+        }
     }
 
 

@@ -11,15 +11,17 @@ class QuizResultViewController: UIViewController {
     private var resultLabel: UILabel!
     private var finishQuizButton: UIButton!
 
+    private var progress: QuestionTrackerView!
+
     private var router: AppRouter!
 
     @objc private func back(sender: UIButton) {
         router.showQuizzes()
     }
 
-    convenience init(router: AppRouter){
+    convenience init(router: AppRouter, progress: QuestionTrackerView){
         self.init()
-
+        self.progress = progress
         self.router = router
     }
 
@@ -40,7 +42,7 @@ class QuizResultViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
 
         resultLabel = UILabel()
-        resultLabel.text = "7/5"
+        resultLabel.text = String(progress.correct) + "/" + String(progress.items)
         resultLabel.textColor = .white
         resultLabel.textAlignment = .center
         resultLabel.font = UIFont.boldSystemFont(ofSize: 40.0)
