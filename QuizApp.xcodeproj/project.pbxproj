@@ -20,6 +20,8 @@
 		F644E8392645919A00A1E84F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E8382645919A00A1E84F /* AppRouter.swift */; };
 		F644E83C26459B2400A1E84F /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E83B26459B2400A1E84F /* QuizViewController.swift */; };
 		F644E83E2645DD2600A1E84F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E83D2645DD2600A1E84F /* SettingsViewController.swift */; };
+		F644E8412645E50900A1E84F /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F644E8402645E50900A1E84F /* settings.png */; };
+		F644E8432645E51A00A1E84F /* quizzes.png in Resources */ = {isa = PBXBuildFile; fileRef = F644E8422645E51A00A1E84F /* quizzes.png */; };
 		F66000CC262204E900F99995 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66000CA262204E900F99995 /* LoginViewController.swift */; };
 		F66000CD262204E900F99995 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66000CB262204E900F99995 /* LoginViewController.xib */; };
 		F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4012623966000CC82BD /* QuizzesViewController.swift */; };
@@ -50,6 +52,8 @@
 		F644E8382645919A00A1E84F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		F644E83B26459B2400A1E84F /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		F644E83D2645DD2600A1E84F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F644E8402645E50900A1E84F /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		F644E8422645E51A00A1E84F /* quizzes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quizzes.png; sourceTree = "<group>"; };
 		F66000CA262204E900F99995 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F66000CB262204E900F99995 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F6BEF4012623966000CC82BD /* QuizzesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,15 @@
 			path = QuizView;
 			sourceTree = "<group>";
 		};
+		F644E83F2645E4FE00A1E84F /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F644E8422645E51A00A1E84F /* quizzes.png */,
+				F644E8402645E50900A1E84F /* settings.png */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
 		F66000CF262204F800F99995 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 		F6BEF41B2624F6D700CC82BD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F644E83F2645E4FE00A1E84F /* navigation */,
 				F6BEF433262504ED00CC82BD /* questionmark.png */,
 			);
 			path = images;
@@ -261,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F66000CD262204E900F99995 /* LoginViewController.xib in Resources */,
+				F644E8432645E51A00A1E84F /* quizzes.png in Resources */,
 				F6FDC9422621BCBD00644B53 /* LaunchScreen.storyboard in Resources */,
+				F644E8412645E50900A1E84F /* settings.png in Resources */,
 				F6FDC93F2621BCBD00644B53 /* Assets.xcassets in Resources */,
 				F6BEF434262504ED00CC82BD /* questionmark.png in Resources */,
 				F6FDC93D2621BCBA00644B53 /* Main.storyboard in Resources */,

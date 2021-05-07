@@ -44,6 +44,10 @@ class AppRouter: AppRouterProtocol {
         let qc = QuizzesViewController(router: self)
         let sc = SettingsViewController(router: self)
 
+        qc.tabBarItem.image = UIImage(named: "quizzes")
+        sc.tabBarItem.image = UIImage(named: "settings")
+
+
         let tabbedController = UITabBarController()
         tabbedController.title = "PopQuiz"
 
