@@ -30,10 +30,10 @@ class QuizzesViewController: UIViewController {
 
         buildViews()
         addConstraints()
-//        fetchQuizzes(UIButton())
 
-
-        quizzesTable.register(UINib(nibName: "QuizzTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+//        quizzesTable.register(UINib(nibName: "QuizzTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        quizzesTable.register(QuizzTableViewCell.self,
+                forCellReuseIdentifier: cellIdentifier)
         quizzesTable.register(QuizzesTableSectionHeaderView.self,
                 forHeaderFooterViewReuseIdentifier: "sectionHeader")
         quizzesTable.dataSource = self
@@ -191,7 +191,7 @@ extension QuizzesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
                 withIdentifier: cellIdentifier,
                 for: indexPath) as! QuizzTableViewCell
-
+        cell.image = UIImage(named: "questionmark")
         let colorIndex = indexPath.section % sectionColors.count
         cell.setup(withQuiz: quizzes[indexPath.section][indexPath.row], withColor: sectionColors[colorIndex])
 

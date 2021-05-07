@@ -17,9 +17,7 @@
 		F66000CC262204E900F99995 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66000CA262204E900F99995 /* LoginViewController.swift */; };
 		F66000CD262204E900F99995 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66000CB262204E900F99995 /* LoginViewController.xib */; };
 		F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4012623966000CC82BD /* QuizzesViewController.swift */; };
-		F6BEF4042623966000CC82BD /* QuizzesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF4022623966000CC82BD /* QuizzesViewController.xib */; };
 		F6BEF4172624B39600CC82BD /* QuizzTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */; };
-		F6BEF4182624B39600CC82BD /* QuizzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */; };
 		F6BEF4272624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */; };
 		F6BEF434262504ED00CC82BD /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF433262504ED00CC82BD /* questionmark.png */; };
 		F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9352621BCBA00644B53 /* AppDelegate.swift */; };
@@ -43,9 +41,7 @@
 		F66000CA262204E900F99995 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F66000CB262204E900F99995 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F6BEF4012623966000CC82BD /* QuizzesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewController.swift; sourceTree = "<group>"; };
-		F6BEF4022623966000CC82BD /* QuizzesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizzesViewController.xib; sourceTree = "<group>"; };
 		F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzTableViewCell.swift; sourceTree = "<group>"; };
-		F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizzTableViewCell.xib; sourceTree = "<group>"; };
 		F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		F6BEF433262504ED00CC82BD /* questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = questionmark.png; path = ../../../../../../Downloads/questionmark.png; sourceTree = "<group>"; };
 		F6FDC9322621BCBA00644B53 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,9 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				F6BEF4012623966000CC82BD /* QuizzesViewController.swift */,
-				F6BEF4022623966000CC82BD /* QuizzesViewController.xib */,
 				F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */,
-				F6BEF4162624B39600CC82BD /* QuizzTableViewCell.xib */,
 				F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */,
 			);
 			path = QuizzesView;
@@ -236,9 +230,7 @@
 				F6FDC9422621BCBD00644B53 /* LaunchScreen.storyboard in Resources */,
 				F6FDC93F2621BCBD00644B53 /* Assets.xcassets in Resources */,
 				F6BEF434262504ED00CC82BD /* questionmark.png in Resources */,
-				F6BEF4182624B39600CC82BD /* QuizzTableViewCell.xib in Resources */,
 				F6FDC93D2621BCBA00644B53 /* Main.storyboard in Resources */,
-				F6BEF4042623966000CC82BD /* QuizzesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
