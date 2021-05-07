@@ -40,8 +40,15 @@ class AppRouter: AppRouterProtocol {
     }
 
     func showQuizzes() {
-        let vc = QuizzesViewController(router: self)
-        navigationController.setViewControllers([vc], animated: false) // replace root viewcontroller
+
+        let qc = QuizzesViewController(router: self)
+        let sc = SettingsViewController(router: self)
+
+        let tabbedController = UITabBarController()
+        tabbedController.title = "PopQuiz"
+
+        tabbedController.viewControllers = [qc, sc]
+        navigationController.setViewControllers([tabbedController], animated: false) // replace root viewcontroller
 
     }
 

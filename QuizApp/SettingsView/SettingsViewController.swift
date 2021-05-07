@@ -24,6 +24,8 @@ class SettingsViewController: UIViewController {
     convenience init(router: AppRouter) {
         self.init()
         self.router = router
+        self.title = "Settings"
+
     }
 
     override func viewDidLoad() {
@@ -63,16 +65,19 @@ class SettingsViewController: UIViewController {
 
         usernameLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(30)
-            make.top.equalToSuperview().offset(view.bounds.height * 0.3)
+            make.top.equalToSuperview().offset(view.bounds.height * 0.15)
         }
         nameLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(30)
-            make.top.equalToSuperview().offset(view.bounds.height * 0.3 + 50)
+            make.top.equalToSuperview().offset((view.bounds.height * 0.15) + 50)
         }
-        nameLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(view.bounds.height * 0.1)
+        logOutButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-view.bounds.height * 0.2)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
         }
+        logOutButton.layer.cornerRadius = 20
 
 
     }

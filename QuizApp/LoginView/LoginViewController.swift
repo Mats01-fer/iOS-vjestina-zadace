@@ -21,17 +21,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     private var router: AppRouter!
-    
-    convenience init(router: AppRouter){
+
+    convenience init(router: AppRouter) {
         self.init()
         self.router = router
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "PopQuiz"
-        
+
         addConstraints()
         errorLable.isHidden = true
         emailField.attributedPlaceholder = NSAttributedString(string: "Email",
@@ -53,13 +53,11 @@ class LoginViewController: UIViewController {
         case .success:
             print("Sucessful login")
             errorLable.isHidden = true
-            
             router.showQuizzes()
         default:
             print("Error while login")
             errorLable.isHidden = false
             self.title = "PopQuiz"
-            router.showQuizzes()
 
         }
 

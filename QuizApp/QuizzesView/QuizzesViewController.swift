@@ -25,6 +25,8 @@ class QuizzesViewController: UIViewController {
     convenience init(router: AppRouter) {
         self.init()
         self.router = router
+        self.title = "PopQuiz"
+
     }
 
 
