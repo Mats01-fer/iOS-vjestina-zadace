@@ -33,6 +33,12 @@ class AppRouter: AppRouterProtocol {
 
     }
 
+    func backToLogin() {
+        let vc = LoginViewController(router: self)
+        navigationController.setViewControllers([vc], animated: false) // replace root viewcontroller
+
+    }
+
     func showQuizzes() {
         let vc = QuizzesViewController(router: self)
         navigationController.setViewControllers([vc], animated: false) // replace root viewcontroller

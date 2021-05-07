@@ -19,6 +19,7 @@
 		F644E837264454A300A1E84F /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E831264454A300A1E84F /* DataServiceProtocol.swift */; };
 		F644E8392645919A00A1E84F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E8382645919A00A1E84F /* AppRouter.swift */; };
 		F644E83C26459B2400A1E84F /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E83B26459B2400A1E84F /* QuizViewController.swift */; };
+		F644E83E2645DD2600A1E84F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E83D2645DD2600A1E84F /* SettingsViewController.swift */; };
 		F66000CC262204E900F99995 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66000CA262204E900F99995 /* LoginViewController.swift */; };
 		F66000CD262204E900F99995 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66000CB262204E900F99995 /* LoginViewController.xib */; };
 		F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4012623966000CC82BD /* QuizzesViewController.swift */; };
@@ -48,6 +49,7 @@
 		F644E831264454A300A1E84F /* DataServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
 		F644E8382645919A00A1E84F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		F644E83B26459B2400A1E84F /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		F644E83D2645DD2600A1E84F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F66000CA262204E900F99995 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F66000CB262204E900F99995 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F6BEF4012623966000CC82BD /* QuizzesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 				8583A4E120B9A5E980510190 /* Pods_QuizApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		728074C039DE1716BA29E425 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				F644E83D2645DD2600A1E84F /* SettingsViewController.swift */,
+			);
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		F644E82A264454A300A1E84F /* Data */ = {
@@ -186,6 +196,7 @@
 				F6FDC9402621BCBD00644B53 /* LaunchScreen.storyboard */,
 				F6FDC9432621BCBD00644B53 /* Info.plist */,
 				F644E8382645919A00A1E84F /* AppRouter.swift */,
+				728074C039DE1716BA29E425 /* SettingsView */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 				F644E8392645919A00A1E84F /* AppRouter.swift in Sources */,
 				F644E832264454A300A1E84F /* DataService.swift in Sources */,
 				F66000CC262204E900F99995 /* LoginViewController.swift in Sources */,
+				F644E83E2645DD2600A1E84F /* SettingsViewController.swift in Sources */,
 				F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */,
 				F644E83C26459B2400A1E84F /* QuizViewController.swift in Sources */,
 				F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */,
