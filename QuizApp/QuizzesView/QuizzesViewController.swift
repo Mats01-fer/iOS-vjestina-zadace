@@ -14,19 +14,15 @@ class QuizzesViewController: UIViewController {
     let cellIdentifier = "cellId"
 
     private var titleLabel: UILabel!
-
     private var getQuizzesButton: UIButton!
-
     private var quizzesTable: UITableView!
-
     private var funFactTitleLabel: UILabel!
     private var funFactLabel: UILabel!
-
     private var sectionColors: [UIColor]!
-    
+
     private var router: AppRouter!
-    
-    convenience init(router: AppRouter){
+
+    convenience init(router: AppRouter) {
         self.init()
         self.router = router
     }
@@ -38,7 +34,6 @@ class QuizzesViewController: UIViewController {
         buildViews()
         addConstraints()
 
-//        quizzesTable.register(UINib(nibName: "QuizzTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         quizzesTable.register(QuizzTableViewCell.self,
                 forCellReuseIdentifier: cellIdentifier)
         quizzesTable.register(QuizzesTableSectionHeaderView.self,
@@ -54,43 +49,6 @@ class QuizzesViewController: UIViewController {
 
     }
 
-    private var nrOfCategories: Int = 0;
-    private var nrPerSection: [Int] = [];
-    private var quizzes: [[Quiz]] = [];
-    private var categories: [QuizCategory] = [];
-
-    @objc private func fetchQuizzes(_ sender: Any) {
-        let allQuizzes = dataService.fetchQuizes()
-        categories = Array(Set(allQuizzes.map({ $0.category }))) // looses ordering !!
-
-        for category in categories {
-            quizzes.append(allQuizzes.filter({ $0.category == category }))
-        }
-
-        for quizz in categories {
-            print(quizz)
-        }
-
-        var nrOFNBAQuestions = 0
-
-
-        nrOFNBAQuestions = allQuizzes.flatMap {
-                    $0.questions
-                }
-                .filter {
-                    $0.question.contains("NBA")
-                }
-                .count
-
-
-        funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
-        funFactLabel.isHidden = false
-        funFactTitleLabel.isHidden = false
-
-        quizzesTable.reloadData()
-        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
-
-    }
 
     private func buildViews() {
 
@@ -181,6 +139,37 @@ class QuizzesViewController: UIViewController {
             make.top.equalTo(view).offset(height * 0.3)
         }
     }
+
+    private var nrOfCategories: Int = 0;
+    private var nrPerSection: [Int] = [];
+    private var quizzes: [[Quiz]] = [];
+    private var categories: [QuizCategory] = [];
+
+    @objc private func fetchQuizzes(_ sender: Any) {
+        let allQuizzes = dataService.fetchQuizes()
+        categories = Array(Set(allQuizzes.map({ $0.category }))) // looses ordering !!
+        for category in categories {
+            quizzes.append(allQuizzes.filter({ $0.category == category }))
+        }
+
+        var nrOFNBAQuestions = 0
+        nrOFNBAQuestions = allQuizzes.flatMap {
+                    $0.questions
+                }
+                .filter {
+                    $0.question.contains("NBA")
+                }
+                .count
+
+
+        funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
+        funFactLabel.isHidden = false
+        funFactTitleLabel.isHidden = false
+
+        quizzesTable.reloadData()
+        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+
+    }
 }
 
 extension QuizzesViewController: UITableViewDataSource {
@@ -203,6 +192,10 @@ extension QuizzesViewController: UITableViewDataSource {
         cell.setup(withQuiz: quizzes[indexPath.section][indexPath.row], withColor: sectionColors[colorIndex])
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router.showQuiz(quiz: quizzes[indexPath.section][indexPath.row])
     }
 
     func tableView(

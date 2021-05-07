@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let nc = UINavigationController()
 
-        let appRouter = AppRouter(navigationConroller: nc)
+        let appRouter = AppRouter(navigationController: nc)
         appRouter.setStartScreen(in: window)
         
     }

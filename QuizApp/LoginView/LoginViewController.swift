@@ -58,6 +58,8 @@ class LoginViewController: UIViewController {
         default:
             print("Error while login")
             errorLable.isHidden = false
+            self.title = "PopQuiz"
+            router.showQuizzes()
 
         }
 
