@@ -149,7 +149,12 @@ class QuizzesViewController: UIViewController {
 
     @objc private func fetchQuizzes(_ sender: Any) {
         let allQuizzes = dataService.fetchQuizes()
-        categories = Array(Set(allQuizzes.map({ $0.category }))) // looses ordering !!
+        let allCategories = allQuizzes.map({ $0.category })
+        for category in allCategories {
+            if (!categories.contains(category)){
+                categories.append(category)
+            }
+        }
         for category in categories {
             quizzes.append(allQuizzes.filter({ $0.category == category }))
         }
