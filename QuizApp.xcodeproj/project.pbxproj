@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		728074D2631089E5C8CD55DF /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */; };
 		7280793BC323CF097AC51E8D /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280711E7320E630382A5A22 /* QuestionViewController.swift */; };
 		78EA4518FD75C8C8E25EB490 /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8583A4E120B9A5E980510190 /* Pods_QuizApp.framework */; };
 		F644E832264454A300A1E84F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644E82B264454A300A1E84F /* DataService.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		3414FABEDF0A1F68FC7DE909 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7280711E7320E630382A5A22 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		8583A4E120B9A5E980510190 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8557CAC6A9C8BE7562F3146 /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
 		F644E82B264454A300A1E84F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				F644E83B26459B2400A1E84F /* QuizViewController.swift */,
 				7280711E7320E630382A5A22 /* QuestionViewController.swift */,
+				72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				F644E834264454A300A1E84F /* Question.swift in Sources */,
 				F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */,
 				7280793BC323CF097AC51E8D /* QuestionViewController.swift in Sources */,
+				728074D2631089E5C8CD55DF /* QuizResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
