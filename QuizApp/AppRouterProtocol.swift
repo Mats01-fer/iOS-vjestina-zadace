@@ -18,6 +18,8 @@ class AppRouter: AppRouterProtocol {
     
     init(navigationConroller: UINavigationController){
         self.navigationConroller = navigationConroller
+        
+        self.navigationConroller.navigationBar.barTintColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 0)
     }
     
     var window: UIWindow?

@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "PopQuiz"
+        
         addConstraints()
         errorLable.isHidden = true
         emailField.attributedPlaceholder = NSAttributedString(string: "Email",
@@ -75,9 +78,10 @@ class LoginViewController: UIViewController {
                 make.centerX.equalToSuperview()
             }
         }
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view).offset(height * 0.1)
-        }
+//        titleLabel.snp.makeConstraints { make in
+//            make.top.equalTo(view).offset(height * 0.1)
+//        }
+        titleLabel.isHidden = true
 
         emailField.snp.makeConstraints { make in
             make.top.equalTo(view).offset(height * 0.2)

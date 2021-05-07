@@ -34,7 +34,7 @@ class QuizzesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "PopQuiz"
         buildViews()
         addConstraints()
 
