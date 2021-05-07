@@ -26,6 +26,11 @@ class QuestionViewController: UIViewController {
 
     @objc private func nextQuestion(_ sender: UIButton) {
         var answerIndex = answerButtons.index(of: sender) ?? 0
+        answerButtons[question.correctAnswer].backgroundColor = .green
+
+        if (answerIndex != question.correctAnswer){
+            sender.backgroundColor = .red
+        }
 
         progressBar.updateProgress(index: self.index, correct: answerIndex == question.correctAnswer)
         router.showNextQuestion(questions: questions, index: self.index + 1, progressBar: progressBar)
