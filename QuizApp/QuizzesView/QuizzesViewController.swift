@@ -23,6 +23,13 @@ class QuizzesViewController: UIViewController {
     private var funFactLabel: UILabel!
 
     private var sectionColors: [UIColor]!
+    
+    private var router: AppRouter!
+    
+    convenience init(router: AppRouter){
+        self.init()
+        self.router = router
+    }
 
 
     override func viewDidLoad() {

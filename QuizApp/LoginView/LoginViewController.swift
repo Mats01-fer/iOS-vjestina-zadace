@@ -20,6 +20,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLable: UILabel!
     @IBOutlet weak var loginButton: UIButton!
 
+    private var router: AppRouter!
+    
+    convenience init(router: AppRouter){
+        self.init()
+        self.router = router
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +50,8 @@ class LoginViewController: UIViewController {
         case .success:
             print("Sucessful login")
             errorLable.isHidden = true
+            
+            router.showQuizzes()
         default:
             print("Error while login")
             errorLable.isHidden = false
