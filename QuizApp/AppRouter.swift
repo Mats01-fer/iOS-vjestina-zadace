@@ -22,8 +22,6 @@ class AppRouter: AppRouterProtocol {
         self.navigationController.navigationBar.barTintColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 0)
     }
 
-    var window: UIWindow?
-
     func setStartScreen(in window: UIWindow?) {
         let vc = LoginViewController(router: self)
 

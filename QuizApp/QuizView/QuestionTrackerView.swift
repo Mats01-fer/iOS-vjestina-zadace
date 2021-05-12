@@ -31,6 +31,11 @@ class QuestionTrackerView: UIView {
 
     }
 
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        // add constraints here
+    }
+
     func updateProgress(index: Int, correct: Bool){
         if (correct){
             bars[index].backgroundColor = .green
@@ -43,6 +48,9 @@ class QuestionTrackerView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        // TODO: should use stackview
+        // TODO: move this to init()
+
         let width = (self.bounds.width - 10) / CGFloat(items) // voodoo
         var n = CGFloat(0)
         for bar in bars{

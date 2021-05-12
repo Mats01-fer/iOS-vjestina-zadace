@@ -10,7 +10,7 @@ import SnapKit
 
 class QuizzTableViewCell: UITableViewCell {
 
-    var titleLabel = UILabel()
+    var titleLabel: UILabel!
     var descriptionLabel = UILabel()
     var quizzImage = UIImageView()
     var difficultyOne = UIImageView(image: UIImage(systemName: "suit.diamond.fill"))
@@ -28,6 +28,8 @@ class QuizzTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Initialization code
+
+        titleLabel = UILabel()
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
@@ -116,7 +118,7 @@ class QuizzTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        // TODO: dont use contentView, wrap view in a background view
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
 

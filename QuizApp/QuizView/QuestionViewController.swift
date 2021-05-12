@@ -33,7 +33,16 @@ class QuestionViewController: UIViewController {
         }
 
         progressBar.updateProgress(index: self.index, correct: answerIndex == question.correctAnswer)
-        router.showNextQuestion(questions: questions, index: self.index + 1, progressBar: progressBar)
+        // TODO: disable then re-enable btn click
+        for btn in answerButtons {
+            btn.isEnabled = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+
+
+            self.router.showNextQuestion(questions: self.questions, index: self.index + 1, progressBar: self.progressBar)
+        }
     }
 
     convenience init(router: AppRouter, _questions: [Question], _index: Int) {
