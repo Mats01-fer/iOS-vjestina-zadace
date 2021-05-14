@@ -26,7 +26,7 @@ class QuestionTrackerView: UIStackView {
 
         status = [UIColor]()
         bars = [UIView]()
-        for i in 0...items - 1 {
+        for _ in 0...items - 1 {
             let bar = UIView()
             bars.append(bar)
             bar.backgroundColor = .white

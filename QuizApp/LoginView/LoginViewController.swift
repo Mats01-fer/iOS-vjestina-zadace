@@ -12,7 +12,8 @@ import SnapKit
 
 class LoginViewController: UIViewController {
 
-    var dataService = DataService()
+//    var dataService = DataService()
+    lazy var presenter = LoginPresenter(with: self)
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
@@ -44,25 +45,11 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
-
-
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
-        let response = dataService.login(email: email, password: password)
-        switch response {
-        case .success:
-            print("Sucessful login")
-            errorLable.isHidden = true
-            router.showQuizzes()
-        default:
-            print("Error while login")
-            errorLable.isHidden = false
-            self.title = "PopQuiz"
-            router.showQuizzes()
-
-
-        }
-
+//        let response = dataService.login(email: email, password: password)
+        presenter.login(email: email, password: password)
+        
 
     }
 
@@ -106,4 +93,19 @@ class LoginViewController: UIViewController {
 
     }
 
+}
+
+extension LoginViewController: LoginPresenterProtocol {
+    func loginSuccess() {
+        print("Sucessful login")
+        errorLable.isHidden = true
+        router.showQuizzes()
+    }
+    
+    func loginFail() {
+        print("Error while login")
+        errorLable.isHidden = false
+    }
+    
+    
 }
