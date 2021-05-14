@@ -67,15 +67,7 @@ class AppRouter: AppRouterProtocol {
                 animated: true)
     }
 
-    func showNextQuestion(questions: [Question], index: Int, progressBar: QuestionTrackerView) {
-        if (questions.count > index) {
-            navigationController?.pushViewController(QuestionViewController(
-                    router: self, _questions: questions, _index: index, progressBar: progressBar),
-                    animated: true)
-
-        } else {
-            navigationController.pushViewController(QuizResultViewController(router: self, progress: progressBar), animated: true)
-        }
-
+    func showResults(correct: Int, total: Int) {
+        navigationController.pushViewController(QuizResultViewController(router: self, correct: correct, total: total), animated: true)
     }
 }

@@ -15,6 +15,8 @@ class QuestionViewController: UIViewController {
     private var index: Int!
     private var question: Question!
     private var answerButtons: [UIButton]!
+    private var noOfCorrect: Int!
+    private var duration: Double?
 
     private var progressBar: QuestionTrackerView!
 
@@ -25,25 +27,45 @@ class QuestionViewController: UIViewController {
     }
 
     @objc private func nextQuestion(_ sender: UIButton) {
-        var answerIndex = answerButtons.index(of: sender) ?? 0
-        answerButtons[question.correctAnswer].backgroundColor = .green
-
-        if (answerIndex != question.correctAnswer){
-            sender.backgroundColor = .red
-        }
-
-        progressBar.updateProgress(index: self.index, correct: answerIndex == question.correctAnswer)
-        // TODO: disable then re-enable btn click
         for btn in answerButtons {
             btn.isEnabled = false
         }
-        // TODO: update current viewcontroller instead of creating a new one
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            guard let self = self else { return }
+        var answerIndex = answerButtons.index(of: sender) ?? 0
+        answerButtons[question.correctAnswer].backgroundColor = .green
 
-
-            self.router.showNextQuestion(questions: self.questions, index: self.index + 1, progressBar: self.progressBar)
+        if (answerIndex != question.correctAnswer) {
+            sender.backgroundColor = .red
+        } else {
+            noOfCorrect += 1
         }
+
+        progressBar.updateProgress(index: self.index, correct: answerIndex == question.correctAnswer)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            if (self.questions.count <= self.index + 1) {
+                self.router.showResults(correct: self.noOfCorrect, total: self.questions.count)
+
+            } else {
+                self.setupQuestion(index: self.index + 1)
+            }
+        }
+    }
+
+    private func setupQuestion(index: Int) {
+        self.index = index
+        question = questions[index]
+        questionTextLabel.text = question.question
+        for i in 0...3 {
+            answerButtons[i].setTitle(question.answers[i], for: .normal)
+            answerButtons[i].backgroundColor = .white
+            answerButtons[i].isEnabled = true
+
+        }
+
+
     }
 
     convenience init(router: AppRouter, _questions: [Question], _index: Int) {
@@ -52,6 +74,7 @@ class QuestionViewController: UIViewController {
         self.questions = _questions
         self.index = _index
         self.question = questions[index]
+        noOfCorrect = 0
         progressBar = QuestionTrackerView(items: questions.count)
     }
 
@@ -128,8 +151,6 @@ class QuestionViewController: UIViewController {
             make.height.equalTo(10)
         }
     }
-
-
 
 
 }
