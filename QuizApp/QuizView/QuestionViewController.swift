@@ -12,15 +12,17 @@ class QuestionViewController: UIViewController {
     private var questionTextLabel: UILabel!
 
     private var questions: [Question]!
+    private var quiz: Quiz!
     private var index: Int!
     private var question: Question!
     private var answerButtons: [UIButton]!
     private var noOfCorrect: Int!
-    private var duration: Double?
+    private var startTime: DispatchTime!
 
     private var progressBar: QuestionTrackerView!
 
     private var router: AppRouter!
+    private var presenter: QuestionPresenter!
 
     @objc private func back(sender: UIButton) {
         router.showQuizzes()
@@ -46,6 +48,16 @@ class QuestionViewController: UIViewController {
                 return
             }
             if (self.questions.count <= self.index + 1) {
+                let endTime = DispatchTime.now()
+                let nanoTime = endTime.uptimeNanoseconds - self.startTime.uptimeNanoseconds
+                let timeInterval = Double(nanoTime) / 1_000_000_000
+                let defaults = UserDefaults.standard
+                print("elapsed time: \(timeInterval), quiz id: \(self.quiz.id), user id: \(defaults.integer(forKey: "userId"))")
+                self.presenter.postQuizResults(results: QuizResult(
+                        quizId: self.quiz.id,
+                        userId: defaults.integer(forKey: "userId"),
+                        duration: timeInterval,
+                        noOfCorrect: self.noOfCorrect))
                 self.router.showResults(correct: self.noOfCorrect, total: self.questions.count)
 
             } else {
@@ -68,19 +80,17 @@ class QuestionViewController: UIViewController {
 
     }
 
-    convenience init(router: AppRouter, _questions: [Question], _index: Int) {
+    convenience init(router: AppRouter, quiz: Quiz, _index: Int) {
         self.init()
         self.router = router
-        self.questions = _questions
+        self.questions = quiz.questions
+        self.quiz = quiz
         self.index = _index
         self.question = questions[index]
         noOfCorrect = 0
         progressBar = QuestionTrackerView(items: questions.count)
-    }
-
-    convenience init(router: AppRouter, _questions: [Question], _index: Int, progressBar: QuestionTrackerView) {
-        self.init(router: router, _questions: _questions, _index: _index)
-        self.progressBar = progressBar
+        startTime = DispatchTime.now()
+        presenter = QuestionPresenter()
     }
 
     override func viewDidLoad() {

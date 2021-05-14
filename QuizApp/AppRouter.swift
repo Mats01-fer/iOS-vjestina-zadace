@@ -61,9 +61,9 @@ class AppRouter: AppRouterProtocol {
                 animated: true)
     }
 
-    func showQuestion(questions: [Question], index: Int) {
+    func showQuestion(questions: Quiz, index: Int) {
         navigationController?.pushViewController(QuestionViewController(
-                router: self, _questions: questions, _index: index),
+                router: self, quiz: questions, _index: index),
                 animated: true)
     }
 
