@@ -37,7 +37,8 @@ class QuestionViewController: UIViewController {
         for btn in answerButtons {
             btn.isEnabled = false
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+        // TODO: update current viewcontroller instead of creating a new one
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let self = self else { return }
 
 
@@ -118,12 +119,17 @@ class QuestionViewController: UIViewController {
 
         }
 
+        let width = view.bounds.width
+
         progressBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
+            make.width.equalTo(width - CGFloat(20))
+            make.height.equalTo(10)
         }
     }
+
+
 
 
 }

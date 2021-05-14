@@ -16,6 +16,7 @@ class QuizResultViewController: UIViewController {
     private var router: AppRouter!
 
     @objc private func back(sender: UIButton) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
         router.showQuizzes()
     }
 
@@ -27,6 +28,7 @@ class QuizResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
 
         let newBackButton = UIBarButtonItem(title: "Back",
                 style: UIBarButtonItem.Style.plain,
