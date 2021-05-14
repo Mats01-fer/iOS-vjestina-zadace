@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7280723A086B8523BF22A3B6 /* QuizzesViewController+Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807C88AAD6B89312AA22E1 /* QuizzesViewController+Presenter.swift */; };
 		728074D2631089E5C8CD55DF /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */; };
 		72807817D72B06D0AA223C5B /* QuestionTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807A77098D8D01C62475C7 /* QuestionTrackerView.swift */; };
 		7280793BC323CF097AC51E8D /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280711E7320E630382A5A22 /* QuestionViewController.swift */; };
+		72807A4662FC4FD5EF5163D8 /* QuizzesPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807CD3FDC2D1BEDF32F8D7 /* QuizzesPresnter.swift */; };
+		72807D7C10B36414A16DA8D1 /* QuizzesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728072D9E5D18E9586D6D8F0 /* QuizzesResponse.swift */; };
 		78EA4518FD75C8C8E25EB490 /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8583A4E120B9A5E980510190 /* Pods_QuizApp.framework */; };
 		F621AD01264E8E5800EA948B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AD00264E8E5800EA948B /* NetworkService.swift */; };
 		F621AD03264E8EA600EA948B /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AD02264E8EA600EA948B /* LogInPresenter.swift */; };
@@ -43,7 +46,10 @@
 /* Begin PBXFileReference section */
 		3414FABEDF0A1F68FC7DE909 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7280711E7320E630382A5A22 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		728072D9E5D18E9586D6D8F0 /* QuizzesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizzesResponse.swift; sourceTree = "<group>"; };
 		72807A77098D8D01C62475C7 /* QuestionTrackerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTrackerView.swift; sourceTree = "<group>"; };
+		72807C88AAD6B89312AA22E1 /* QuizzesViewController+Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuizzesViewController+Presenter.swift"; sourceTree = "<group>"; };
+		72807CD3FDC2D1BEDF32F8D7 /* QuizzesPresnter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizzesPresnter.swift; sourceTree = "<group>"; };
 		72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		8583A4E120B9A5E980510190 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8557CAC6A9C8BE7562F3146 /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 				F644E82F264454A300A1E84F /* LoginStatus.swift */,
 				F644E830264454A300A1E84F /* Quiz.swift */,
 				F6F3FDA0264EDF83003E7E77 /* Login.swift */,
+				728072D9E5D18E9586D6D8F0 /* QuizzesResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +190,8 @@
 				F6BEF4012623966000CC82BD /* QuizzesViewController.swift */,
 				F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */,
 				F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */,
+				72807CD3FDC2D1BEDF32F8D7 /* QuizzesPresnter.swift */,
+				72807C88AAD6B89312AA22E1 /* QuizzesViewController+Presenter.swift */,
 			);
 			path = QuizzesView;
 			sourceTree = "<group>";
@@ -376,6 +385,9 @@
 				728074D2631089E5C8CD55DF /* QuizResultViewController.swift in Sources */,
 				F621AD05264E918200EA948B /* NetworkServiceProtocol.swift in Sources */,
 				72807817D72B06D0AA223C5B /* QuestionTrackerView.swift in Sources */,
+				72807A4662FC4FD5EF5163D8 /* QuizzesPresnter.swift in Sources */,
+				7280723A086B8523BF22A3B6 /* QuizzesViewController+Presenter.swift in Sources */,
+				72807D7C10B36414A16DA8D1 /* QuizzesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

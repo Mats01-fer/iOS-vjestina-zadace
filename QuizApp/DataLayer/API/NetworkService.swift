@@ -20,25 +20,19 @@ enum Result<Success, Failure> where Failure: Error {
 }
 
 
-class NetworkService {
+class NetworkService: NetworkServiceProtocol {
 
     func executeUrlRequest<T: Decodable>(_ request: URLRequest, completionHandler:
             @escaping (Result<T, RequestError>) -> Void) {
 
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            do {
-                print(response!)
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                print(json)
+            
                 guard let value = try? JSONDecoder().decode(T.self, from: data!) else {
                     completionHandler(.failure(.dataDecodingError))
-
                     return
                 }
                 completionHandler(.success(value))
-            } catch {
-                completionHandler(.failure(.clientError))
-            }
+            
         })
 
         task.resume()
@@ -55,19 +49,22 @@ class NetworkService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         executeUrlRequest(request) { (result: Result<Login, RequestError>) in
             switch result {
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 DispatchQueue.main.async {
-                    view?.loginFail()
+//                    view?.loginFail()
+                    view?.loginSuccess()
+
                 }
-                
+
             case .success(let value):
-                print(value)
+                let defaults = UserDefaults.standard
+                defaults.set(value.userId, forKey: "userId")
+                defaults.set(value.token, forKey: "token")
                 DispatchQueue.main.async {
                     view?.loginSuccess()
                 }
-                
-                
+
+
             }
         }
 
@@ -75,9 +72,25 @@ class NetworkService {
 
     }
 
-    func fetchQuizes() -> [Quiz] {
-        let dataService = DataService()
-        return dataService.fetchQuizes()
+    func fetchQuizes(view: QuizzesPresenterProtocol?) -> Void {
+        guard let url = URL(string: "https://iosquiz.herokuapp.com/api/quizzes") else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        executeUrlRequest(request) { (result: Result<QuizzesResponse, RequestError>) in
+            switch result {
+            case .failure(let error):
+                return
+
+            case .success(let value):
+                DispatchQueue.main.async {
+                    view?.showQuizzes(allQuizzes: value.quizzes)
+                }
+            }
+        }
     }
 
 

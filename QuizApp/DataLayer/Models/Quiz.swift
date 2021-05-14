@@ -1,4 +1,4 @@
-struct Quiz {
+struct Quiz: Codable {
 
     let id: Int
     let title: String
@@ -7,5 +7,16 @@ struct Quiz {
     let level: Int
     let imageUrl: String
     let questions: [Question]
+
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case category = "category"
+        case level = "level"
+        case imageUrl = "image"
+        case questions = "questions"
+    }
 
 }
