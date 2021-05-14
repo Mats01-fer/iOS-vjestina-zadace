@@ -23,12 +23,7 @@ class LoginPresenter {
     }
     
     func login(email: String, password: String) {
-        switch networkService.login(email: email, password: password) {
-            case .success:
-                view?.loginSuccess()
-            default:
-                view?.loginFail()
-        }
+        networkService.login(email: email, password: password, view: view)
     }
     
 }

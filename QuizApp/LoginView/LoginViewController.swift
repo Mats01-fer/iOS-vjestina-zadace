@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
+        loginButton.isEnabled = false
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
 //        let response = dataService.login(email: email, password: password)
@@ -97,12 +98,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginPresenterProtocol {
     func loginSuccess() {
+        loginButton.isEnabled = true
         print("Sucessful login")
         errorLable.isHidden = true
         router.showQuizzes()
     }
     
     func loginFail() {
+        loginButton.isEnabled = true
         print("Error while login")
         errorLable.isHidden = false
     }
