@@ -72,8 +72,7 @@ class NetworkService: NetworkServiceProtocol {
             switch result {
             case .failure(_):
                 DispatchQueue.main.async {
-//                    view?.loginFail()
-                    view?.loginSuccess()
+                    view?.loginFail()
 
                 }
 
