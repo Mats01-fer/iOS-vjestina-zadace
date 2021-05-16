@@ -102,7 +102,7 @@ class NetworkService: NetworkServiceProtocol {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         executeUrlRequest(request) { (result: Result<QuizzesResponse, RequestError>) in
             switch result {
-            case .failure(let error):
+            case .failure(_):
                 return
 
             case .success(let value):
@@ -129,9 +129,10 @@ class NetworkService: NetworkServiceProtocol {
         executeUrlRequestNoResponse(request) { (result: Result<String, RequestError>) in
             switch result {
             case .failure(let error):
+                print(error)
                 return
 
-            case .success(let value):
+            case .success(_):
                 print("saved quiz result")
             }
         }
