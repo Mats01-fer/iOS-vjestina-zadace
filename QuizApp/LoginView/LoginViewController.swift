@@ -96,7 +96,7 @@ class LoginViewController: UIViewController {
 
 }
 
-extension LoginViewController: LoginPresenterProtocol {
+extension LoginViewController: LoginPresenterDelegate {
     func loginSuccess() {
         loginButton.isEnabled = true
         print("Sucessful login")
@@ -109,6 +109,4 @@ extension LoginViewController: LoginPresenterProtocol {
         print("Error while login")
         errorLable.isHidden = false
     }
-    
-    
 }

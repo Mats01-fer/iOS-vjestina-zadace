@@ -33,7 +33,7 @@ class NetworkService: NetworkServiceProtocol {
                 completionHandler(.failure(.serverError))
                 return
             }
-            if(httpResponse.statusCode == 200) {
+            if (httpResponse.statusCode == 200) {
                 completionHandler(.success("Saved" as! String))
             }
 
@@ -60,7 +60,7 @@ class NetworkService: NetworkServiceProtocol {
     }
 
 
-    func login(email: String, password: String, view: LoginPresenterProtocol?) -> Void {
+    func login(email: String, password: String, completionHandler: @escaping (Result<Login, RequestError>) -> Void) {
         guard let url = URL(string: "https://iosquiz.herokuapp.com/api/session?username=\(email)&password=\(password)") else {
             return
         }
@@ -68,27 +68,8 @@ class NetworkService: NetworkServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        executeUrlRequest(request) { (result: Result<Login, RequestError>) in
-            switch result {
-            case .failure(_):
-                DispatchQueue.main.async {
-                    view?.loginFail()
 
-                }
-
-            case .success(let value):
-                let defaults = UserDefaults.standard
-                defaults.set(value.userId, forKey: "userId")
-                defaults.set(value.token, forKey: "token")
-                DispatchQueue.main.async {
-                    view?.loginSuccess()
-                }
-
-
-            }
-        }
-
-
+        executeUrlRequest(request, completionHandler: completionHandler)
     }
 
     func fetchQuizes(view: QuizzesPresenterProtocol?) -> Void {

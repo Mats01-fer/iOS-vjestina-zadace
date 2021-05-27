@@ -10,6 +10,7 @@
 		7280723A086B8523BF22A3B6 /* QuizzesViewController+Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807C88AAD6B89312AA22E1 /* QuizzesViewController+Presenter.swift */; };
 		728074D2631089E5C8CD55DF /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807DA21B2BEED01C4142D9 /* QuizResultViewController.swift */; };
 		7280750EFCB955110505DE7D /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728078857CA21CBD23326931 /* QuestionPresenter.swift */; };
+		7280757B76EB000358E7C310 /* LoginPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728071B1F1E3DF574B2A0344 /* LoginPresenterDelegate.swift */; };
 		72807817D72B06D0AA223C5B /* QuestionTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807A77098D8D01C62475C7 /* QuestionTrackerView.swift */; };
 		7280793BC323CF097AC51E8D /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280711E7320E630382A5A22 /* QuestionViewController.swift */; };
 		72807A4662FC4FD5EF5163D8 /* QuizzesPresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807CD3FDC2D1BEDF32F8D7 /* QuizzesPresnter.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		3414FABEDF0A1F68FC7DE909 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7280711E7320E630382A5A22 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		728071B1F1E3DF574B2A0344 /* LoginPresenterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterDelegate.swift; sourceTree = "<group>"; };
 		728072D9E5D18E9586D6D8F0 /* QuizzesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizzesResponse.swift; sourceTree = "<group>"; };
 		728078857CA21CBD23326931 /* QuestionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
 		72807A5C42F379C55D989DD1 /* QuizResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResult.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				F66000CA262204E900F99995 /* LoginViewController.swift */,
 				F66000CB262204E900F99995 /* LoginViewController.xib */,
 				F621AD02264E8EA600EA948B /* LogInPresenter.swift */,
+				728071B1F1E3DF574B2A0344 /* LoginPresenterDelegate.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				72807D7C10B36414A16DA8D1 /* QuizzesResponse.swift in Sources */,
 				72807A5C8B5CF664EF2CD253 /* QuizResult.swift in Sources */,
 				7280750EFCB955110505DE7D /* QuestionPresenter.swift in Sources */,
+				7280757B76EB000358E7C310 /* LoginPresenterDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
