@@ -16,12 +16,18 @@ protocol LoginPresenterDelegate: UIViewController {
 
 class LoginPresenter {
     weak var delegate: LoginPresenterDelegate?
-    var networkService: NetworkService!
+    private var router: AppRouterProtocol!
+    var networkService: NetworkServiceProtocol!
 
-    init(with view: LoginPresenterDelegate) {
-        self.delegate = view
+    init( router: AppRouterProtocol) {
+        self.router = router
         networkService = NetworkService()
     }
+
+    func setDelegate(delegate: LoginPresenterDelegate){
+        self.delegate = delegate
+    }
+
 
     func login(email: String, password: String) {
         networkService.login(email: email, password: password) { [weak self] (result: Result<Login, RequestError>) in
@@ -53,5 +59,8 @@ class LoginPresenter {
         }
     }
 
+    func showQuizzes() {
+        self.router.showQuizzes()
+    }
 }
 

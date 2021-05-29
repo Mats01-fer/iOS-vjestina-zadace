@@ -7,7 +7,7 @@ import UIKit
 
 
 class QuestionPresenter {
-    var networkService: NetworkService!
+    var networkService: NetworkServiceProtocol!
 
     init() {
         networkService = NetworkService()

@@ -13,7 +13,7 @@ import SnapKit
 class LoginViewController: UIViewController {
 
 //    var dataService = DataService()
-    lazy var presenter = LoginPresenter(with: self)
+    private var presenter: LoginPresenter!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
@@ -21,11 +21,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLable: UILabel!
     @IBOutlet weak var loginButton: UIButton!
 
-    private var router: AppRouter!
-
-    convenience init(router: AppRouter) {
+    convenience init(presenter: LoginPresenter) {
         self.init()
-        self.router = router
+        self.presenter = presenter
+        self.presenter.setDelegate(delegate: self)
     }
 
     override func viewDidLoad() {
@@ -101,7 +100,7 @@ extension LoginViewController: LoginPresenterDelegate {
         loginButton.isEnabled = true
         print("Sucessful login")
         errorLable.isHidden = true
-        router.showQuizzes()
+        presenter.showQuizzes()
     }
     
     func loginFail() {

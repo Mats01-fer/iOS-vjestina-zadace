@@ -11,7 +11,7 @@ protocol QuizzesPresenterProtocol: UIViewController {
 
 class QuizzesPresenter {
     weak var view: QuizzesPresenterProtocol?
-    var networkService: NetworkService!
+    var networkService: NetworkServiceProtocol!
 
     init(with view: QuizzesPresenterProtocol){
         self.view = view

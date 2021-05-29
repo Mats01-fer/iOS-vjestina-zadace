@@ -23,7 +23,7 @@ enum Result<Success, Failure> where Failure: Error {
 class NetworkService: NetworkServiceProtocol {
 
 
-    func executeUrlRequestNoResponse<String: Decodable>(_ request: URLRequest, completionHandler:
+    private func executeUrlRequestNoResponse<String: Decodable>(_ request: URLRequest, completionHandler:
             @escaping (Result<String, RequestError>) -> Void) {
 
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -43,7 +43,7 @@ class NetworkService: NetworkServiceProtocol {
     }
 
 
-    func executeUrlRequest<T: Decodable>(_ request: URLRequest, completionHandler:
+    private func executeUrlRequest<T: Decodable>(_ request: URLRequest, completionHandler:
             @escaping (Result<T, RequestError>) -> Void) {
 
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
