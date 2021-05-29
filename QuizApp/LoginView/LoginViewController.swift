@@ -12,7 +12,8 @@ import SnapKit
 
 class LoginViewController: UIViewController {
 
-    var dataService = DataService()
+//    var dataService = DataService()
+    private var presenter: LoginPresenter!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
@@ -20,11 +21,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLable: UILabel!
     @IBOutlet weak var loginButton: UIButton!
 
-    private var router: AppRouter!
-
-    convenience init(router: AppRouter) {
+    convenience init(presenter: LoginPresenter) {
         self.init()
-        self.router = router
+        self.presenter = presenter
+        self.presenter.setDelegate(delegate: self)
     }
 
     override func viewDidLoad() {
@@ -44,34 +44,16 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
-
-
+        loginButton.isEnabled = false
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
-        let response = dataService.login(email: email, password: password)
-        switch response {
-        case .success:
-            print("Sucessful login")
-            errorLable.isHidden = true
-            router.showQuizzes()
-        default:
-            print("Error while login")
-            errorLable.isHidden = false
-            self.title = "PopQuiz"
-            router.showQuizzes()
-
-
-        }
-
-
+        presenter.login(email: email, password: password)
     }
 
     private func addConstraints() {
 
         let elements = [titleLabel, emailField, passwordField, errorLable, loginButton]
-
         let height = view.bounds.height
-
         for element in elements {
             element!.snp.makeConstraints { make in
                 // should gard this instead of force unwrapping
@@ -80,9 +62,7 @@ class LoginViewController: UIViewController {
                 make.centerX.equalToSuperview()
             }
         }
-//        titleLabel.snp.makeConstraints { make in
-//            make.top.equalTo(view).offset(height * 0.1)
-//        }
+
         titleLabel.isHidden = true
 
         emailField.snp.makeConstraints { make in
@@ -93,7 +73,6 @@ class LoginViewController: UIViewController {
             make.top.equalTo(emailField).offset(45 + 18)
         }
 
-
         errorLable.snp.makeConstraints { make in
             make.top.equalTo(passwordField).offset(38)
         }
@@ -103,7 +82,21 @@ class LoginViewController: UIViewController {
         }
         loginButton.layer.cornerRadius = 20
 
-
     }
 
+}
+
+extension LoginViewController: LoginPresenterDelegate {
+    func loginSuccess() {
+        loginButton.isEnabled = true
+        print("Sucessful login")
+        errorLable.isHidden = true
+        presenter.showQuizzes()
+    }
+
+    func loginFail() {
+        loginButton.isEnabled = true
+        print("Error while login")
+        errorLable.isHidden = false
+    }
 }

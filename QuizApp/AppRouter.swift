@@ -11,6 +11,7 @@ import UIKit
 protocol AppRouterProtocol {
 
     func setStartScreen(in window: UIWindow?)
+    func showQuizzes()
 }
 
 class AppRouter: AppRouterProtocol {
@@ -23,7 +24,8 @@ class AppRouter: AppRouterProtocol {
     }
 
     func setStartScreen(in window: UIWindow?) {
-        let vc = LoginViewController(router: self)
+        let lp = LoginPresenter(router: self)
+        let vc = LoginViewController(presenter: lp)
 
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController
@@ -32,7 +34,8 @@ class AppRouter: AppRouterProtocol {
     }
 
     func backToLogin() {
-        let vc = LoginViewController(router: self)
+        let lp = LoginPresenter(router: self)
+        let vc = LoginViewController(presenter: lp)
         navigationController.setViewControllers([vc], animated: false) // replace root viewcontroller
 
     }
@@ -61,21 +64,13 @@ class AppRouter: AppRouterProtocol {
                 animated: true)
     }
 
-    func showQuestion(questions: [Question], index: Int) {
+    func showQuestion(questions: Quiz, index: Int) {
         navigationController?.pushViewController(QuestionViewController(
-                router: self, _questions: questions, _index: index),
+                router: self, quiz: questions, _index: index),
                 animated: true)
     }
 
-    func showNextQuestion(questions: [Question], index: Int, progressBar: QuestionTrackerView) {
-        if (questions.count > index) {
-            navigationController?.pushViewController(QuestionViewController(
-                    router: self, _questions: questions, _index: index, progressBar: progressBar),
-                    animated: true)
-
-        } else {
-            navigationController.pushViewController(QuizResultViewController(router: self, progress: progressBar), animated: true)
-        }
-
+    func showResults(correct: Int, total: Int) {
+        navigationController.pushViewController(QuizResultViewController(router: self, correct: correct, total: total), animated: true)
     }
 }

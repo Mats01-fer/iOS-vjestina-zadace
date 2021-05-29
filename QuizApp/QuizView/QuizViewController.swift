@@ -23,7 +23,7 @@ class QuizViewController: UIViewController {
 
     @objc private func startQuiz(_ sender: Any) {
 
-        router.showQuestion(questions: quiz.questions, index: 0)
+        router.showQuestion(questions: quiz, index: 0)
     }
 
     convenience init(router: AppRouter, quiz: Quiz) {

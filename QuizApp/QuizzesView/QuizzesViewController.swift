@@ -10,14 +10,14 @@ import SnapKit
 
 
 class QuizzesViewController: UIViewController {
-    let dataService = DataService()
+    lazy var presenter = QuizzesPresenter(with: self)
     let cellIdentifier = "cellId"
 
     private var titleLabel: UILabel!
     private var getQuizzesButton: UIButton!
-    private var quizzesTable: UITableView!
-    private var funFactTitleLabel: UILabel!
-    private var funFactLabel: UILabel!
+    var quizzesTable: UITableView!
+    var funFactTitleLabel: UILabel!
+    var funFactLabel: UILabel!
     private var sectionColors: [UIColor]!
 
     private var router: AppRouter!
@@ -144,37 +144,12 @@ class QuizzesViewController: UIViewController {
 
     private var nrOfCategories: Int = 0;
     private var nrPerSection: [Int] = [];
-    private var quizzes: [[Quiz]] = [];
-    private var categories: [QuizCategory] = [];
+    internal var quizzes: [[Quiz]] = [];
+    var categories: [QuizCategory] = [];
 
     @objc private func fetchQuizzes(_ sender: Any) {
-        let allQuizzes = dataService.fetchQuizes()
-        let allCategories = allQuizzes.map({ $0.category })
-        for category in allCategories {
-            if (!categories.contains(category)){
-                categories.append(category)
-            }
-        }
-        for category in categories {
-            quizzes.append(allQuizzes.filter({ $0.category == category }))
-        }
+        presenter.fetchQuizzes()
 
-        var nrOFNBAQuestions = 0
-        nrOFNBAQuestions = allQuizzes.flatMap {
-                    $0.questions
-                }
-                .filter {
-                    $0.question.contains("NBA")
-                }
-                .count
-
-
-        funFactLabel.text = "There are \(nrOFNBAQuestions) questions that contain the word “NBA”"
-        funFactLabel.isHidden = false
-        funFactTitleLabel.isHidden = false
-
-        quizzesTable.reloadData()
-        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
 
     }
 }

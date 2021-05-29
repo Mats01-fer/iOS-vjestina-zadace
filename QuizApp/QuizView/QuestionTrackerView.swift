@@ -9,13 +9,11 @@ class QuestionTrackerView: UIStackView {
 
     private var status: [UIColor]!
     private var bars: [UIView]!
-    var correct: Int!
     var items: Int!
 
     convenience init(items: Int) {
         self.init()
         self.items = items
-        correct = 0
 
         axis = .horizontal
         alignment = .fill
@@ -26,7 +24,7 @@ class QuestionTrackerView: UIStackView {
 
         status = [UIColor]()
         bars = [UIView]()
-        for i in 0...items - 1 {
+        for _ in 0...items - 1 {
             let bar = UIView()
             bars.append(bar)
             bar.backgroundColor = .white
@@ -40,7 +38,6 @@ class QuestionTrackerView: UIStackView {
     func updateProgress(index: Int, correct: Bool) {
         if (correct) {
             bars[index].backgroundColor = .green
-            self.correct += 1
         } else {
             bars[index].backgroundColor = .red
         }
