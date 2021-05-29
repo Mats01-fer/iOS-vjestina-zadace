@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol LoginPresenterDelegate: UIViewController {
-    func loginSuccess()
-    func loginFail()
-}
 
 
 class LoginPresenter {

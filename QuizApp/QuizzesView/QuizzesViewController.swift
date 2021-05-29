@@ -148,7 +148,7 @@ class QuizzesViewController: UIViewController {
     var categories: [QuizCategory] = [];
 
     @objc private func fetchQuizzes(_ sender: Any) {
-        presenter.fetchQuizes()
+        presenter.fetchQuizzes()
 
 
     }

@@ -18,8 +18,21 @@ class QuizzesPresenter {
         networkService = NetworkService()
     }
 
-    func fetchQuizes() {
-        networkService.fetchQuizes(view: view)
+    func fetchQuizzes() {
+        networkService.fetchQuizzes { [weak self] (result: Result<QuizzesResponse, RequestError>) in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case .failure(_):
+                return
+
+            case .success(let value):
+                DispatchQueue.main.async {
+                    self.view?.showQuizzes(allQuizzes: value.quizzes)
+                }
+            }
+        }
     }
 
 }

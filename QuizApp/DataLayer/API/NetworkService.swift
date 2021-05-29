@@ -22,7 +22,6 @@ enum Result<Success, Failure> where Failure: Error {
 
 class NetworkService: NetworkServiceProtocol {
 
-
     private func executeUrlRequestNoResponse<String: Decodable>(_ request: URLRequest, completionHandler:
             @escaping (Result<String, RequestError>) -> Void) {
 
@@ -72,7 +71,7 @@ class NetworkService: NetworkServiceProtocol {
         executeUrlRequest(request, completionHandler: completionHandler)
     }
 
-    func fetchQuizes(view: QuizzesPresenterProtocol?) -> Void {
+    func fetchQuizzes(completionHandler: @escaping (Result<QuizzesResponse, RequestError>) -> Void) {
         guard let url = URL(string: "https://iosquiz.herokuapp.com/api/quizzes") else {
             return
         }
@@ -80,17 +79,7 @@ class NetworkService: NetworkServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        executeUrlRequest(request) { (result: Result<QuizzesResponse, RequestError>) in
-            switch result {
-            case .failure(_):
-                return
-
-            case .success(let value):
-                DispatchQueue.main.async {
-                    view?.showQuizzes(allQuizzes: value.quizzes)
-                }
-            }
-        }
+        executeUrlRequest(request, completionHandler: completionHandler)
     }
 
     func postQuizResults(results: QuizResult) {

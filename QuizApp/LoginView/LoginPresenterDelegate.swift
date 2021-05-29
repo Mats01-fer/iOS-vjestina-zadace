@@ -3,3 +3,9 @@
 //
 
 import Foundation
+import UIKit
+
+protocol LoginPresenterDelegate: AnyObject {
+    func loginSuccess()
+    func loginFail()
+}

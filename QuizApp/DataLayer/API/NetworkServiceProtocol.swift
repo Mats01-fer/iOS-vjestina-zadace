@@ -13,8 +13,8 @@ protocol NetworkServiceProtocol {
                password: String,
                completionHandler:
                 @escaping (Result<Login, RequestError>) -> Void) -> Void
-    
-    func fetchQuizes(view: QuizzesPresenterProtocol?) -> Void
+
+    func fetchQuizzes(completionHandler: @escaping (Result<QuizzesResponse, RequestError>) -> Void)
     
     func postQuizResults(results: QuizResult)
 
