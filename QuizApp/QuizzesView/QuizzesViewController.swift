@@ -10,7 +10,6 @@ import SnapKit
 
 
 class QuizzesViewController: UIViewController {
-    lazy var presenter = QuizzesPresenter(with: self)
     let cellIdentifier = "cellId"
 
     private var titleLabel: UILabel!
@@ -20,12 +19,12 @@ class QuizzesViewController: UIViewController {
     var funFactLabel: UILabel!
     private var sectionColors: [UIColor]!
 
-    private var router: AppRouter!
+    private var presenter: QuizzesPresenter?
 
-    convenience init(router: AppRouter) {
+    convenience init(presenter: QuizzesPresenter) {
         self.init()
-        self.router = router
         self.title = "PopQuiz"
+        self.presenter = presenter
 
     }
 
@@ -148,7 +147,7 @@ class QuizzesViewController: UIViewController {
     var categories: [QuizCategory] = [];
 
     @objc private func fetchQuizzes(_ sender: Any) {
-        presenter.fetchQuizzes()
+        presenter?.fetchQuizzes()
 
 
     }
@@ -177,7 +176,7 @@ extension QuizzesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router.showQuiz(quiz: quizzes[indexPath.section][indexPath.row])
+        presenter?.showQuiz(quiz: quizzes[indexPath.section][indexPath.row])
     }
 
     func tableView(

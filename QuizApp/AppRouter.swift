@@ -12,6 +12,8 @@ protocol AppRouterProtocol {
 
     func setStartScreen(in window: UIWindow?)
     func showQuizzes()
+    func backToLogin()
+    func showQuiz(quiz: Quiz)
 }
 
 class AppRouter: AppRouterProtocol {
@@ -41,8 +43,8 @@ class AppRouter: AppRouterProtocol {
     }
 
     func showQuizzes() {
-
-        let qc = QuizzesViewController(router: self)
+        let repo = QuizRepository(databaseDataSource: QuizDatabaseDataSource(), networkDataSource: QuizNetworkDataSource())
+        let qc = QuizzesViewController(presenter: QuizzesPresenter(router: self, repository: repo))
         let sc = SettingsViewController(router: self)
 
         qc.tabBarItem.image = UIImage(named: "quizzes")
