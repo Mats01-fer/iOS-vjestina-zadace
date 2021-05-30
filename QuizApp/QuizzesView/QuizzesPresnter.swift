@@ -24,6 +24,8 @@ class QuizzesPresenter {
     func setView(view: QuizzesPresenterProtocol){
         self.view = view
     }
+    
+    
 
     func fetchQuizzes() {
 //        networkService.fetchQuizzes { [weak self] (result: Result<QuizzesResponse, RequestError>) in
@@ -45,8 +47,17 @@ class QuizzesPresenter {
             return
         }
         
+        
+    
+        let reachability = try! Reachability()
+        
+        var connected = false
         // check here if there's internet
-        if (true) {
+        if reachability.connection != .unavailable {
+            connected = true
+        }
+       
+        if(connected){
             repository.fetchQuizzesFromRemote { [weak self] (result: Result<[Quiz], RequestError>) in
                 guard let self = self else {
                     return
@@ -67,6 +78,7 @@ class QuizzesPresenter {
             self.view?.showQuizzes(allQuizzes: quizzes)
             
         }
+        
 
     }
 
