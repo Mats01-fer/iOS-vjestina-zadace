@@ -60,11 +60,23 @@ class QuizRepository {
     }
     
     func getLocalQuizzes() -> [Quiz] {
+        self.getLocalQuizzes(name: "")
+    }
+    
+    
+    func getLocalQuizzes(name: String) -> [Quiz] {
         print("I am getting you some quizzes from local storage")
         //        return [Quiz(id: 1, title: "Test", description: "static test", category: .sport, level: 2, imageUrl: "", questions: [Question(id: 1, question: "a question", answers: ["a", "b", "c", "d"], correctAnswer: 0)])]
         //
+        var namePredicate = NSPredicate(value: true)
+        print("in search with: \(name)")
+        if !name.isEmpty {
+            print("searcing with: \(name)")
+            namePredicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(CDQuiz.title), name)
+        }
+
         let request: NSFetchRequest<CDQuiz> = CDQuiz.fetchRequest()
-        
+        request.predicate = namePredicate
         do {
             return try coreDataContext.fetch(request).map { Quiz(with: $0) }
         } catch {

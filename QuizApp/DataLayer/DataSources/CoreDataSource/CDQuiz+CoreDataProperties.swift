@@ -21,8 +21,8 @@ extension CDQuiz {
     @NSManaged public var quiz_description: String
     @NSManaged public var level: Int32
     @NSManaged public var imageUrl: String?
+    @NSManaged public var cetegory: String
     @NSManaged public var questions: NSSet?
-    @NSManaged public var category: CDQuizCategory?
 
 }
 

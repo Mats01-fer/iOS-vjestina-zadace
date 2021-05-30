@@ -8,17 +8,17 @@
         <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDQuiz" inverseName="questions" inverseEntity="CDQuiz"/>
     </entity>
     <entity name="CDQuiz" representedClassName="CDQuiz" syncable="YES">
+        <attribute name="cetegory" optional="YES" attributeType="String"/>
         <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="level" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="quiz_description" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuizCategory" inverseName="quiz" inverseEntity="CDQuizCategory"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuesiton" inverseName="quiz" inverseEntity="CDQuesiton"/>
     </entity>
     <entity name="CDQuizCategory" representedClassName="CDQuizCategory" syncable="YES">
         <attribute name="name" attributeType="String"/>
-        <relationship name="quiz" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuiz" inverseName="category" inverseEntity="CDQuiz"/>
+        <relationship name="quiz" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuiz"/>
     </entity>
     <elements>
         <element name="CDQuiz" positionX="-63" positionY="-18" width="128" height="134"/>

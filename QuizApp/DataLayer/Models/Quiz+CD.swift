@@ -16,7 +16,7 @@ extension Quiz {
         description = entity.quiz_description
         level = Int(entity.level)
         imageUrl = ""
-        category = .sport
+        category = QuizCategory(rawValue: entity.cetegory)!
         questions = []
         self.fillInQuesiotn(questions: entity.questions?.allObjects as! [CDQuesiton])
             
@@ -35,6 +35,7 @@ extension Quiz {
         entity.title = title
         entity.quiz_description = description
         entity.level = Int32(level)
+        entity.cetegory = category.rawValue
     }
     
 }
