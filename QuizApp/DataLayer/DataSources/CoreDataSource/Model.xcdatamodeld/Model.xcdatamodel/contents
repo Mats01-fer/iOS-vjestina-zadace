@@ -5,7 +5,7 @@
         <attribute name="correctAnswer" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="question" attributeType="String"/>
-        <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuiz" inverseName="questions" inverseEntity="CDQuiz"/>
+        <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDQuiz" inverseName="questions" inverseEntity="CDQuiz"/>
     </entity>
     <entity name="CDQuiz" representedClassName="CDQuiz" syncable="YES">
         <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

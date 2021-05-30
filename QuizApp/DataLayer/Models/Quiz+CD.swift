@@ -18,15 +18,15 @@ extension Quiz {
         imageUrl = ""
         category = .sport
         questions = []
-        self.makeQuestionsArray(cdQuestions: entity.questions!)
-        
+        self.fillInQuesiotn(questions: entity.questions?.allObjects as! [CDQuesiton])
+            
     }
     
-    mutating func makeQuestionsArray(cdQuestions: NSSet) {
-        for cdQuestion in cdQuestions.allObjects {
-            print(cdQuestion)
+    mutating func fillInQuesiotn(questions: [CDQuesiton]){
+        questions.forEach{ question in
+            let newQuestion = Question(with: question)
+            self.questions.append(newQuestion)
         }
-        self.questions = [Question(id: 1, question: "a question", answers: ["a", "b", "c", "d"], correctAnswer: 0)]
     }
     
     func populate(_ entity: CDQuiz, in context: NSManagedObjectContext) {
