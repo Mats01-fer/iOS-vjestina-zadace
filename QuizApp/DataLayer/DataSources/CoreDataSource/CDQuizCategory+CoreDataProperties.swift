@@ -2,7 +2,7 @@
 //  CDQuizCategory+CoreDataProperties.swift
 //  
 //
-//  Created by Matej Butkovic on 29.05.2021..
+//  Created by Matej Butkovic on 30.05.2021..
 //
 //
 

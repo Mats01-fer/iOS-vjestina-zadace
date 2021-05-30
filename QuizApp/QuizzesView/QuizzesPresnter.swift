@@ -44,8 +44,9 @@ class QuizzesPresenter {
         guard let repository = repository else {
             return
         }
-
-        if (false) {
+        
+        // check here if there's internet
+        if (true) {
             repository.fetchQuizzesFromRemote { [weak self] (result: Result<[Quiz], RequestError>) in
                 guard let self = self else {
                     return
@@ -63,9 +64,8 @@ class QuizzesPresenter {
 
         } else {
             let quizzes = repository.getLocalQuizzes()
-            DispatchQueue.main.async {
-                self.view?.showQuizzes(allQuizzes: quizzes)
-            }
+            self.view?.showQuizzes(allQuizzes: quizzes)
+            
         }
 
     }

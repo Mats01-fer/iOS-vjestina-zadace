@@ -7,6 +7,7 @@ import UIKit
 
 extension QuizzesViewController: QuizzesPresenterProtocol {
     func showQuizzes(allQuizzes: [Quiz]) {
+        print(allQuizzes)
         let allCategories = allQuizzes.map({ $0.category })
         for category in allCategories {
             if (!categories.contains(category)){

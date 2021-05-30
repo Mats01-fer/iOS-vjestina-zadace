@@ -25,6 +25,7 @@ class QuizzesViewController: UIViewController {
         self.init()
         self.title = "PopQuiz"
         self.presenter = presenter
+        self.presenter?.setView(view: self)
 
     }
 
