@@ -12,6 +12,8 @@ protocol AppRouterProtocol {
 
     func setStartScreen(in window: UIWindow?)
     func showQuizzes()
+    func backToLogin()
+    func showQuiz(quiz: Quiz)
 }
 
 class AppRouter: AppRouterProtocol {
@@ -41,18 +43,20 @@ class AppRouter: AppRouterProtocol {
     }
 
     func showQuizzes() {
-
-        let qc = QuizzesViewController(router: self)
+        let repo = QuizRepository(databaseDataSource: QuizDatabaseDataSource(), networkDataSource: QuizNetworkDataSource())
+        let qc = QuizzesViewController(presenter: QuizzesPresenter(router: self, repository: repo))
+        let searchc = SearchViewController(presenter: SearchPresenter(router: self, repository: repo))
         let sc = SettingsViewController(router: self)
 
         qc.tabBarItem.image = UIImage(named: "quizzes")
         sc.tabBarItem.image = UIImage(named: "settings")
+        searchc.tabBarItem.image = UIImage(named: "search")
 
 
         let tabbedController = UITabBarController()
         tabbedController.title = "PopQuiz"
 
-        tabbedController.viewControllers = [qc, sc]
+        tabbedController.viewControllers = [qc, searchc, sc]
         navigationController.setViewControllers([tabbedController], animated: false) // replace root viewcontroller
 
     }

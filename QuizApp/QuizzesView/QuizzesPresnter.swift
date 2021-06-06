@@ -10,29 +10,80 @@ protocol QuizzesPresenterProtocol: UIViewController {
 }
 
 class QuizzesPresenter {
-    weak var view: QuizzesPresenterProtocol?
     var networkService: NetworkServiceProtocol!
+    private var repository: QuizRepository?
+    private var router: AppRouterProtocol!
+    private weak var view: QuizzesPresenterProtocol?
 
-    init(with view: QuizzesPresenterProtocol){
-        self.view = view
+    init(router: AppRouterProtocol, repository: QuizRepository) {
+        self.router = router
         networkService = NetworkService()
+        self.repository = repository
     }
 
-    func fetchQuizzes() {
-        networkService.fetchQuizzes { [weak self] (result: Result<QuizzesResponse, RequestError>) in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case .failure(_):
-                return
+    func setView(view: QuizzesPresenterProtocol){
+        self.view = view
+    }
+    
+    
 
-            case .success(let value):
-                DispatchQueue.main.async {
-                    self.view?.showQuizzes(allQuizzes: value.quizzes)
+    func fetchQuizzes() {
+//        networkService.fetchQuizzes { [weak self] (result: Result<QuizzesResponse, RequestError>) in
+//            guard let self = self else {
+//                return
+//            }
+//            switch result {
+//            case .failure(_):
+//                return
+//
+//            case .success(let value):
+//                DispatchQueue.main.async {
+//                    self.view?.showQuizzes(allQuizzes: value.quizzes)
+//                }
+//            }
+//        }
+
+        guard let repository = repository else {
+            return
+        }
+        
+        
+    
+        let reachability = try! Reachability()
+        
+        var connected = false
+        // check here if there's internet
+        if reachability.connection != .unavailable {
+            connected = true
+        }
+       
+        if(connected){
+            repository.fetchQuizzesFromRemote { [weak self] (result: Result<[Quiz], RequestError>) in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case .failure(_):
+                    return
+
+                case .success(let value):
+                    DispatchQueue.main.async {
+                        self.view?.showQuizzes(allQuizzes: value)
+                    }
                 }
             }
+
+        } else {
+            let quizzes = repository.getLocalQuizzes()
+            self.view?.showQuizzes(allQuizzes: quizzes)
+            
         }
+        
+
+    }
+
+    func showQuiz(quiz: Quiz){
+        self.router.showQuiz(quiz: quiz)
     }
 
 }

@@ -1,27 +1,27 @@
 //
-//  QuizzesViewController.swift
+//  SearchViewController.swift
 //  QuizApp
 //
-//  Created by Matej Butkovic on 11.04.2021..
+//  Created by Matej Butkovic on 30.05.2021..
 //
 
 import UIKit
-import SnapKit
-import Reachability
 
-
-class QuizzesViewController: UIViewController {
+class SearchViewController: UIViewController {
+    
+    
     let cellIdentifier = "cellId"
     
     private var titleLabel: UILabel!
     var quizzesTable: UITableView!
-    var funFactTitleLabel: UILabel!
-    var funFactLabel: UILabel!
+    var searchField: UITextField!
+    var searchButton: UIButton!
     private var sectionColors: [UIColor]!
     
-    private var presenter: QuizzesPresenter?
     
-    convenience init(presenter: QuizzesPresenter) {
+    private var presenter: SearchPresenter?
+    
+    convenience init(presenter: SearchPresenter) {
         self.init()
         self.title = "PopQuiz"
         self.presenter = presenter
@@ -49,36 +49,38 @@ class QuizzesViewController: UIViewController {
         ]
         
         
-        
-        presenter?.fetchQuizzes()
-        
-        
     }
-
+    
+    @objc func search(_ sender: Any){
+        presenter?.fetchQuizzes(name: searchField.text ?? "")
+    }
+    
     
     private func buildViews() {
         
         view.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+        
+        searchField = UITextField()
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search",
+                                                               attributes:
+                                                                [NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        searchButton = UIButton()
+        searchButton.setTitleColor(.black, for: .normal)
+        searchButton.setTitle("Search", for: .normal)
+
+        
+        searchButton.tintColor = .white
+
+        searchButton.addTarget(self, action: #selector(self.search), for: .touchUpInside)
         
         quizzesTable = UITableView()
         
         quizzesTable.backgroundView?.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
         quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
         quizzesTable.separatorStyle = UITableViewCell.SeparatorStyle.none
+    
         
-        funFactLabel = UILabel()
-        funFactLabel.textColor = .white
-        funFactLabel.contentMode = .scaleToFill
-        funFactLabel.numberOfLines = 2
-        funFactLabel.isHidden = true
-        
-        funFactTitleLabel = UILabel()
-        funFactTitleLabel.text = "💡 Fun Fact"
-        funFactTitleLabel.textColor = .white
-        funFactTitleLabel.contentMode = .scaleToFill
-        funFactTitleLabel.font = UIFont.systemFont(ofSize: 18)
-        funFactTitleLabel.numberOfLines = 1
-        funFactTitleLabel.isHidden = true
         
         titleLabel = UILabel()
         titleLabel.text = "PopQuiz"
@@ -88,9 +90,9 @@ class QuizzesViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 22)
         titleLabel.numberOfLines = 1
         
+        view.addSubview(searchField)
+        view.addSubview(searchButton)
         view.addSubview(quizzesTable)
-        view.addSubview(funFactLabel)
-        view.addSubview(funFactTitleLabel)
         view.addSubview(titleLabel)
         
         
@@ -99,6 +101,20 @@ class QuizzesViewController: UIViewController {
     private func addConstraints() {
         let height = view.bounds.height
         
+        searchField.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(45)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view).offset(height * 0.12)
+        }
+        
+        searchButton.snp.makeConstraints { make in
+                make.width.equalToSuperview().multipliedBy(0.2)
+                make.height.equalTo(45)
+                make.right.equalToSuperview()
+                make.top.equalTo(view).offset(height * 0.12)
+            }
+        
         titleLabel.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(45)
@@ -106,23 +122,12 @@ class QuizzesViewController: UIViewController {
             make.top.equalTo(view).offset(height * 0.06)
         }
         
-        funFactTitleLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.88)
-            make.height.equalTo(30)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view).offset(height * 0.2)
-        }
-        funFactLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(45)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view).offset(height * 0.2 + 30.0)
-        }
+        
         
         quizzesTable.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
-            make.top.equalTo(view).offset(height * 0.3)
+            make.top.equalTo(view).offset(height * 0.2)
         }
     }
     
@@ -133,7 +138,7 @@ class QuizzesViewController: UIViewController {
     
 }
 
-extension QuizzesViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
@@ -169,7 +174,7 @@ extension QuizzesViewController: UITableViewDataSource {
 }
 
 
-extension QuizzesViewController: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170.0
@@ -196,5 +201,23 @@ extension QuizzesViewController: UITableViewDelegate {
             view.textLabel?.textColor = sectionColors[colorIndex]
             
         }
+    }
+}
+
+extension SearchViewController: SearchPresnterDelegate{
+    func showQuizzes(allQuizzes: [Quiz]) {
+        let allCategories = allQuizzes.map({ $0.category })
+        for category in allCategories {
+            if (!categories.contains(category)){
+                categories.append(category)
+            }
+        }
+        for category in categories {
+            quizzes.append(allQuizzes.filter({ $0.category == category }))
+        }
+        
+        quizzesTable.reloadData()
+        quizzesTable.backgroundColor = UIColor(red: 0.15, green: 0.18, blue: 0.46, alpha: 1.00)
+        
     }
 }
