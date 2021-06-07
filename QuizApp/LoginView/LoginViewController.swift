@@ -98,5 +98,6 @@ extension LoginViewController: LoginPresenterDelegate {
         loginButton.isEnabled = true
         print("Error while login")
         errorLable.isHidden = false
+
     }
 }

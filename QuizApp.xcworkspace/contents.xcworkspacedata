@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/matejbutkovic/fer/iOS_2020/zadace/QuizApp/QuizApp/DataLayer/DataSources/CoreDataSource/CDQuiz+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/matejbutkovic/fer/iOS_2020/zadace/QuizApp/QuizApp/DataLayer/DataSources/CoreDataSource/CDQuiz+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:QuizApp.xcodeproj">
    </FileRef>
    <FileRef
