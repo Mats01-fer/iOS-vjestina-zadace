@@ -37,7 +37,6 @@
 		F6BEF4032623966000CC82BD /* QuizzesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4012623966000CC82BD /* QuizzesViewController.swift */; };
 		F6BEF4172624B39600CC82BD /* QuizzTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */; };
 		F6BEF4272624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */; };
-		F6BEF434262504ED00CC82BD /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F6BEF433262504ED00CC82BD /* questionmark.png */; };
 		F6F3FDA1264EDF83003E7E77 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F3FDA0264EDF83003E7E77 /* Login.swift */; };
 		F6F8069B2662E80400449E92 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6F806992662E80400449E92 /* Model.xcdatamodeld */; };
 		F6F806AA26630D8700449E92 /* Quiz+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F806A926630D8700449E92 /* Quiz+CD.swift */; };
@@ -54,6 +53,7 @@
 		F6F806DA2664344B00449E92 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F6F806D92664344B00449E92 /* search.png */; };
 		F6F806DD2664399B00449E92 /* CDQuiz+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F806DC2664399B00449E92 /* CDQuiz+CoreDataClass.swift */; };
 		F6F806DE2664399B00449E92 /* CDQuiz+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F806DB2664399B00449E92 /* CDQuiz+CoreDataProperties.swift */; };
+		F6FBA868266E1456005644B8 /* questionmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F6FBA867266E1456005644B8 /* questionmark.png */; };
 		F6FDC9362621BCBA00644B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9352621BCBA00644B53 /* AppDelegate.swift */; };
 		F6FDC9382621BCBA00644B53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */; };
 		F6FDC93A2621BCBA00644B53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FDC9392621BCBA00644B53 /* ViewController.swift */; };
@@ -95,7 +95,6 @@
 		F6BEF4012623966000CC82BD /* QuizzesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesViewController.swift; sourceTree = "<group>"; };
 		F6BEF4152624B39600CC82BD /* QuizzTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzTableViewCell.swift; sourceTree = "<group>"; };
 		F6BEF4262624FB9100CC82BD /* QuizzesTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesTableSectionHeaderView.swift; sourceTree = "<group>"; };
-		F6BEF433262504ED00CC82BD /* questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = questionmark.png; path = ../../../../../../Downloads/questionmark.png; sourceTree = "<group>"; };
 		F6F3FDA0264EDF83003E7E77 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		F6F8069A2662E80400449E92 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F6F806A926630D8700449E92 /* Quiz+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quiz+CD.swift"; sourceTree = "<group>"; };
@@ -112,6 +111,7 @@
 		F6F806D92664344B00449E92 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		F6F806DB2664399B00449E92 /* CDQuiz+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDQuiz+CoreDataProperties.swift"; path = "/Users/matejbutkovic/fer/iOS_2020/zadace/QuizApp/QuizApp/DataLayer/DataSources/CoreDataSource/CDQuiz+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		F6F806DC2664399B00449E92 /* CDQuiz+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDQuiz+CoreDataClass.swift"; path = "/Users/matejbutkovic/fer/iOS_2020/zadace/QuizApp/QuizApp/DataLayer/DataSources/CoreDataSource/CDQuiz+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		F6FBA867266E1456005644B8 /* questionmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = questionmark.png; path = ../../../../../../../Downloads/questionmark.png; sourceTree = "<group>"; };
 		F6FDC9322621BCBA00644B53 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FDC9352621BCBA00644B53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6FDC9372621BCBA00644B53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 		F6BEF41B2624F6D700CC82BD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F6FBA867266E1456005644B8 /* questionmark.png */,
 				F644E83F2645E4FE00A1E84F /* navigation */,
-				F6BEF433262504ED00CC82BD /* questionmark.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				F6F806DA2664344B00449E92 /* search.png in Resources */,
 				F644E8412645E50900A1E84F /* settings.png in Resources */,
 				F6FDC93F2621BCBD00644B53 /* Assets.xcassets in Resources */,
-				F6BEF434262504ED00CC82BD /* questionmark.png in Resources */,
+				F6FBA868266E1456005644B8 /* questionmark.png in Resources */,
 				F6FDC93D2621BCBA00644B53 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
